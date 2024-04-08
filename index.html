@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./reset/styles.css">
-    <link rel="stylesheet" href="./assets/styles.css">
+    <link rel="stylesheet" href="assets/styles.css">
 
-    <title>The Doggy Dog Breed Quiz</title>
+    <title>Document</title>
 </head>
 
 <body>
@@ -15,60 +14,62 @@
         <h1>The Doggy Dog Breed Quiz</h1>
         <h2>Which breed is the right fit for you?</h2>
     </header>
-    <main id="quiz-section">
-        <section>
+    <main>
+        <section id="quiz-btn-section">
             <button id="quiz-btn">Take the Quiz</button>
         </section>
-        <section>
-            <h3>Question One: What is your ideal dog size?</h3>
-            <form>
-                <input type="radio" name="choice" value="small">
-                <label>Small</label>
-                <input type="radio" name="choice" value="medium">
-                <label>Medium</label>
-                <input type="radio" name="choice" value="large">
-                <label>Large</label>
-            </form>
-        </section>
-        <section>
-            <h3>Question Two: Would you prefer your dog be more energetic or calm</h3>
-            <form>
-                <input type="radio" name="choice" value="energetic">
-                <label>Energetic</label>
-                <input type="radio" name="choice" value="calm">
-                <label>Calm</label>
-            </form>
-        </section>
-        <section>
-            <h3>Question Three: Would you prefer your dog be more confident or reserved?</h3>
-            <form>
-                <input type="radio" name="choice" value="confident">
-                <label>Confident</label>
-                <input type="radio" name="choice" value="reserved">
-                <label>Reserved</label>
-            </form>
-        </section>
-        <section>
-            <h3>Question Four: Would you prefer your dog be more independent or affectionate?</h3>
-            <form>
-                <input type="radio" name="choice" value="independent">
-                <label>Independent</label>
-                <input type="radio" name="choice" value="affectionate">
-                <label>Affectionate</label>
-            </form>
-        </section>
-        <section>
-            <h3>Questioni Five: Would you like a dog bred for Hunting, Herding, or Companionship?</h3>
-            <form>
-                <input type="radio" name="choice" value="hunting">
-                <label>Hunting</label>
-                <input type="radio" name="choice" value="herding">
-                <label>Herding</label>
-                <input type="radio" name="choice" value="companionship">
-                <label>Companionship</label>
-            </form>
-        </section>
-        <button id="quiz-submit">See Your Breed</button>
+        <form id="quiz-section">
+            <section>
+                <h3>Question One: What is your ideal dog size?</h3>
+                <section id="q1">
+                    <input type="radio" name="choice1" value="small">
+                    <label>Small</label>
+                    <input type="radio" name="choice1" value="medium">
+                    <label>Medium</label>
+                    <input type="radio" name="choice1" value="large">
+                    <label>Large</label>
+                </section>
+            </section>
+            <section>
+                <h3>Question Two: Would you prefer your dog be more energetic or calm</h3>
+                <section id="q2">
+                    <input type="radio" name="choice2" value="energetic">
+                    <label>Energetic</label>
+                    <input type="radio" name="choice2" value="calm">
+                    <label>Calm</label>
+                </section>
+            </section>
+            <section>
+                <h3>Question Three: Would you prefer your dog be more confident or reserved?</h3>
+                <section id="q3">
+                    <input type="radio" name="choice3" value="confident">
+                    <label>Confident</label>
+                    <input type="radio" name="choice3" value="reserved">
+                    <label>Reserved</label>
+                </section>
+            </section>
+            <section>
+                <h3>Question Four: Would you prefer your dog be more independent or affectionate?</h3>
+                <section id="q4">
+                    <input type="radio" name="choice4" value="independent">
+                    <label>Independent</label>
+                    <input type="radio" name="choice4" value="affectionate">
+                    <label>Affectionate</label>
+                </section>
+            </section>
+            <section>
+                <h3>Questioni Five: Would you like a dog bred for Hunting, Herding, or Companionship?</h3>
+                <section id="q5">
+                    <input type="radio" name="choice5" value="hunting">
+                    <label>Hunting</label>
+                    <input type="radio" name="choice5" value="herding">
+                    <label>Herding</label>
+                    <input type="radio" name="choice5" value="companionship">
+                    <label>Companionship</label>
+                </section>
+            </section>
+            <button id="quiz-submit">See Your Breed</button>
+        </form>
     </main>
     <footer>
         <section>
@@ -78,4 +79,5 @@
     </footer>
 </body>
 <script src="./assets/script.js"></script>
+
 </html>
