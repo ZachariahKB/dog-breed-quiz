@@ -9,27 +9,31 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-function getBreeds() {
-  let breedArr = []
-  return new Promise ((resolve,reject){
-    for (let i = 0; i < 8; i++) {
-      fetch(`https://api.thedogapi.com/v1/breeds?limit=20&page=${i}`, requestOptions)
-        .then(response => response.json())
-        .then(result => {
-          breedArr = breedArr.concat(result)
-          //console.log(breedArr)
-        }
-        )
-        .catch(error => console.log('error', error));
-  
+async function getBreeds() {
+  let breedArr = [];
+  try {
+    for (let i = 0; i <10; i++) {
+      const response = await fetch(`https://api.thedogapi.com/v1/breeds?limit=20&page=${i}`, requestOptions);
+      const result = await response.json();
+      breedArr = breedArr.concat(result);
     }
-    if(breedArr.length>150)
-
-
-  })
-  
-  console.log (breedArr)
+    return breedArr;
+  } catch (error) {
+    console.log('Error:', error);
+    return []; // Return an empty array in case of error
+  }
 }
+
+async function fetchData() {
+  try {
+    const breedsData = await getBreeds();
+    console.log(breedsData); // This will log the actual data array
+    // Do whatever you want with the data array here
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
 // Get the modal
 var modal = document.getElementById("myModal");
 
@@ -56,4 +60,4 @@ window.onclick = function (event) {
   }
 }
 
-getBreeds()
+fetchData()
