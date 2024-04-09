@@ -43,22 +43,161 @@ const quizSubmitHandler = function (event) {
 // };
 
 const filterBreedsBySize = function () {
-  const size= document.querySelector('input[name="choice1"]:checked').value;
+  const size = document.querySelector('input[name="choice1"]:checked').value;
   const dogApiKey = "live_Lh6idGIX2s0O1fSTNNNZgzh7TIrEKbLJbyj3sglCt6SuVDT7mcN4JhVL2kvJA5MO"
   const dogApiUrl = (`https://api.thedogapi.com/v1/breeds?size=${size}&format=json&has_breeds=true&order=RANDOM&page=0&api_key=${dogApiKey}`);
-    // requestOptions);
+  // requestOptions);
 
   // const response = 
-  fetch(dogApiUrl).then(function(response){return response.json()}).then(function(result){
+  fetch(dogApiUrl).then(function (response) { return response.json() }).then(function (result) {
     // breedArr = breedArr.concat(result)
     console.log(result)
     console.log(dogApiUrl)
-  })}
-    // requestOptions);
-  // const result = response.json();
+  })
+}
+// requestOptions);
+// const result = response.json();
 
 // Map user's Q2 answer to API dog breed characteristics
 const traitMapping = {
+  "question1": {
+    "small": [
+      "3 - 6",
+      "3 - 7",
+      "4 - 7",
+      "4 - 9",
+      "6 - 8",
+      "3 - 12",
+      "6 - 9",
+      "7 - 10",
+      "8 - 10",
+      "6 - 13",
+      "8 - 11",
+      "7 - 13",
+      "8 - 14",
+      "7 - 15",
+      "10 - 13",
+      "11 - 12",
+      "9 - 15",
+      "12",
+      "9 - 16",
+      "10 - 16",
+      "11.5 - 15.5",
+      "13 - 14",
+      "10 - 18",
+      "14",
+      "14 - 16",
+      "12 - 18",
+      "13 - 18",
+      "11 - 20",
+      "15 - 17",
+      "14 - 18",
+      "8 - 25",
+      "15 - 19",
+      "10 - 25",
+      "up - 18",
+      "15 - 22",
+      "18 - 22",
+      "17 - 23",
+      "9 - 31",
+      "20 - 24",
+      "22 - 24",
+      "20 - 30",
+      "23 - 28",
+      "18 - 33",
+    ],
+    "med": [
+      "25 - 27",
+      "20 - 35",
+      "25 - 30",
+      "28",
+      "25 - 33",
+      "24 - 35",
+      "20 - 40",
+      "30",
+      "25 - 35",
+      "24 - 38",
+      "25 - 38",
+      "25 - 40",
+      "25 - 45",
+      "30 - 40",
+      "32 - 40",
+      "35 - 40",
+      "30 - 45",
+      "31 - 46",
+      "35 - 45",
+      "30 - 50",
+      "35 - 50",
+      "33 - 53",
+      "38 - 50",
+      "33 - 55",
+      "30 - 60",
+      "35 - 55",
+      "35 - 60",
+      "35 - 65",
+      "45 - 55",
+      "40 - 60",
+      "48 - 55",
+      "40 - 65",
+      "45 - 60",
+      "50 - 55",
+      "35 - 70",
+      "44 - 62",
+      "44 - 66",
+      "50 - 60",
+      "40 - 70",
+      "45 - 65",
+      "45 - 70",
+      "50 - 65",
+      "40 - 80",
+      "50 - 70",
+      "45 - 80",
+      "55 - 75",
+      "55 - 80",
+      "65 - 75",
+      "50 - 90",
+      "55 - 85",
+      "55 - 88",
+      "50 - 95",
+      "55 - 90",
+      "60 - 85",
+      "61 - 85",
+      // Yes, this m-dash seems out of place but unfortunately that's what's in the API so we need it to match
+      "65 – 85",
+    ],
+    "large": [
+      "66 - 88",
+      "65 - 90",
+      "75 - 80",
+      "70 - 90",
+      "60 - 100",
+      "65 - 100",
+      "65 - 115",
+      "60 - 120",
+      "30 - 150",
+      "70 - 110",
+      "80 - 100",
+      "65 - 120",
+      "70 - 115",
+      "75 - 110",
+      "80 - 110",
+      "88 - 110",
+      "85 - 115",
+      "70 - 130",
+      "88 - 120",
+      "90 - 120",
+      "85 - 140",
+      "80 - 150",
+      "100 - 130",
+      "100 - 150",
+      "120 - 140",
+      "105 - 180",
+      "120 - 170",
+      "110 - 190",
+      "110 - 200",
+      "130 - 180",
+    ],
+  },
   "question2": {
     "energetic": [
       "active",
