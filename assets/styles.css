@@ -7,76 +7,96 @@
 
 /* Body styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #52b51d;
-    color: #333;
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #2b2b2b;
+    color: #eee;
     line-height: 1.6;
 }
 
 /* Header styling */
 header {
-    background-color: #d01010;
+    background: linear-gradient(to right, #3a1c71, #d76d77, #ffaf7b);
     color: #fff;
-    padding: 20px;
+    padding: 5vw 0; /* Adjust padding based on viewport width */
     text-align: center;
 }
 
 header h1 {
-    margin-bottom: 10px;
+    margin-bottom: 2vw; /* Adjust margin based on viewport width */
+    font-size: 5vw; /* Adjust font size based on viewport width */
+    font-weight: bold;
+    text-shadow: 0.5vw 0.5vw 1vw rgba(0, 0, 0, 0.5); /* Adjust text shadow based on viewport width */
+}
+
+header h2 {
+    font-size: 2vw; /* Adjust font size based on viewport width */
+    font-weight: normal;
 }
 
 /* Main styling */
 main {
-    margin: 20px;
+    margin: 5vw; /* Adjust margin based on viewport width */
 }
 
 /* Quiz section styling */
-#quiz-btn-section {
-    text-align: center;
-    margin-bottom: 20px;
+#quiz-btn-section, #quiz-section {
+    margin-bottom: 5vw; /* Adjust margin based on viewport width */
 }
 
 #quiz-section {
-    background-color: #a092c2;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-section {
-    margin-bottom: 20px;
+    background: linear-gradient(to right, #393e46, #2b2b2b);
+    padding: 5vw; /* Adjust padding based on viewport width */
+    border-radius: 2vw; /* Adjust border radius based on viewport width */
+    box-shadow: 0 2vw 4vw rgba(0, 0, 0, 0.5); /* Adjust box shadow based on viewport width */
 }
 
 h3 {
-    margin-bottom: 10px;
+    margin-bottom: 2vw; /* Adjust margin based on viewport width */
+    font-size: 2.5vw; /* Adjust font size based on viewport width */
+    color: #ff5e78;
+    text-transform: uppercase;
 }
 
-input[type="radio"] {
-    margin-right: 5px;
+input[type="radio"] + label {
+    display: inline-block;
+    cursor: pointer;
+    font-size: 2vw; /* Adjust font size based on viewport width */
+    padding: 2vw 4vw; /* Adjust padding based on viewport width */
+    border-radius: 1vw; /* Adjust border radius based on viewport width */
+    background-color: #4b4b4b;
+    margin-right: 2vw; /* Adjust margin based on viewport width */
+    border: 2px solid #fff; /* Add border */
 }
 
 /* Submit button styling */
 #quiz-submit {
-    background-color: #333;
+    background: linear-gradient(to right, #3a1c71, #d76d77, #ffaf7b);
     color: #fff;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 3vw 6vw; /* Adjust padding based on viewport width */
+    border-radius: 1vw; /* Adjust border radius based on viewport width */
     cursor: pointer;
+    font-size: 3vw; /* Adjust font size based on viewport width */
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    margin-top: 2vw; /* Add margin to separate from other elements */
 }
 
 #quiz-submit:hover {
-    background-color: #555;
+    background: linear-gradient(to right, #ffaf7b, #d76d77, #3a1c71);
 }
 
 /* Footer styling */
 footer {
-    background-color: #333;
+    background: linear-gradient(to right, #3a1c71, #d76d77, #ffaf7b);
     color: #fff;
-    padding: 10px 0;
+    padding: 5vw 0; /* Adjust padding based on viewport width */
     text-align: center;
+    margin-top: 10vw; /* Adjust margin based on viewport width */
 }
 
 footer h6 {
-    margin-bottom: 5px;
+    margin-bottom: 1vw; /* Adjust margin based on viewport width */
+    font-size: 1.5vw; /* Adjust font size based on viewport width */
+    text-transform: uppercase;
 }
