@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./reset/styles.css">
+    <link rel="stylesheet" href="./assets/reset.css">
     <link rel="stylesheet" href="./assets/styles.css">
 
     <title>The Doggy Dog Breed Quiz</title>
@@ -31,7 +31,7 @@
             </form>
         </section>
         <section>
-            <h3>Question Two: Would you prefer your dog be more energetic or calm</h3>
+            <h3>Question Two: Would you prefer your dog be more energetic or calm?</h3>
             <form>
                 <input type="radio" name="choice" value="energetic">
                 <label>Energetic</label>
@@ -69,6 +69,20 @@
             </form>
         </section>
         <button id="quiz-submit">See Your Breed</button>
+
+       <!-- Trigger/Open The Modal -->
+        <button id="myBtn">Open Modal</button>
+       
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <p>Your data is being processed. Click to continue.</p>
+            </div>
+          
+          </div>
+
     </main>
     <footer>
         <section>
