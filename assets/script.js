@@ -399,9 +399,41 @@ const getBreeds = function () {
               breed.temperament.toLowerCase().indexOf("feisty") > 0);
           }
         }
-        // return traitMapping.question2[responses.energy].includes(breed.temperament);
       });
       console.log(energyFilteredBreedsArr);
+
+
+      // Tiered filter Lvl 2
+      const tierFilteredBreedsArrLvl2 = sizeFilteredBreedsArr.filter(function (breed) {
+        if ("temperament" in breed) {
+          if (responses.energy === "calm") {
+            return (breed.temperament.toLowerCase().indexOf("calm") > 0 ||
+              breed.temperament.toLowerCase().indexOf("aloof") > 0 ||
+              breed.temperament.toLowerCase().indexOf("composed") > 0 ||
+              breed.temperament.toLowerCase().indexOf("tranquil") > 0 ||
+              breed.temperament.toLowerCase().indexOf("even tempered") > 0 ||
+              breed.temperament.toLowerCase().indexOf("peaceful") > 0 ||
+              breed.temperament.toLowerCase().indexOf("refined") > 0 ||
+              breed.temperament.toLowerCase().indexOf("unflappable") > 0 ||
+              breed.temperament.toLowerCase().indexOf("docile") > 0 ||
+              breed.temperament.toLowerCase().indexOf("composed") > 0);
+          } else if (responses.energy === "energetic") {
+            return (breed.temperament.toLowerCase().indexOf("energetic") > 0 ||
+              breed.temperament.toLowerCase().indexOf("active") > 0 ||
+              breed.temperament.toLowerCase().indexOf("fun-loving") > 0 ||
+              breed.temperament.toLowerCase().indexOf("spirited") > 0 ||
+              breed.temperament.toLowerCase().indexOf("excitable") > 0 ||
+              breed.temperament.toLowerCase().indexOf("bubbly") > 0 ||
+              breed.temperament.toLowerCase().indexOf("adventurous") > 0 ||
+              breed.temperament.toLowerCase().indexOf("wild") > 0 ||
+              breed.temperament.toLowerCase().indexOf("hardworking") > 0 ||
+              breed.temperament.toLowerCase().indexOf("courageous") > 0 ||
+              breed.temperament.toLowerCase().indexOf("feisty") > 0);
+          }
+        }
+      });
+      console.log(tierFilteredBreedsArrLvl2);
+
 
       // Filter based on confidence
       const confidenceFilteredBreedsArr = baseBreedsArr.filter(function (breed) {
@@ -431,6 +463,36 @@ const getBreeds = function () {
       });
       console.log(confidenceFilteredBreedsArr);
 
+
+      // Tiered filter Lvl 3
+      const tierFilteredBreedsArrLvl3 = tierFilteredBreedsArrLvl2.filter(function (breed) {
+        if ("temperament" in breed) {
+          if (responses.confidence === "confident") {
+            return (breed.temperament.toLowerCase().indexOf("assertive") > 0 ||
+              breed.temperament.toLowerCase().indexOf("fearless") > 0 ||
+              breed.temperament.toLowerCase().indexOf("bold") > 0 ||
+              breed.temperament.toLowerCase().indexOf("self-confident") > 0 ||
+              breed.temperament.toLowerCase().indexOf("vigilant") > 0 ||
+              breed.temperament.toLowerCase().indexOf("stubborn") > 0 ||
+              breed.temperament.toLowerCase().indexOf("dominant") > 0 ||
+              breed.temperament.toLowerCase().indexOf("strong willed") > 0 ||
+              breed.temperament.toLowerCase().indexOf("determined") > 0 ||
+              breed.temperament.toLowerCase().indexOf("vocal") > 0 ||
+              breed.temperament.toLowerCase().indexOf("adaptable") > 0);
+          } else if (responses.confidence === "reserved") {
+            return (breed.temperament.toLowerCase().indexOf("shy") > 0 ||
+              breed.temperament.toLowerCase().indexOf("reserved") > 0 ||
+              breed.temperament.toLowerCase().indexOf("apprehensive") > 0 ||
+              breed.temperament.toLowerCase().indexOf("nervous") > 0 ||
+              breed.temperament.toLowerCase().indexOf("hesitant") > 0 ||
+              breed.temperament.toLowerCase().indexOf("kind") > 0 ||
+              breed.temperament.toLowerCase().indexOf("sweet-tempered") > 0);
+          }
+        }
+      });
+      console.log(tierFilteredBreedsArrLvl3);
+
+      
       // Filter based on affection
       const affectionFilteredBreedsArr = baseBreedsArr.filter(function (breed) {
         if ("temperament" in breed) {
@@ -462,7 +524,41 @@ const getBreeds = function () {
         }
       });
       console.log(affectionFilteredBreedsArr);
-     
+
+
+      // Tiered filter Lvl 4
+      const tierFilteredBreedsArrLvl4 = tierFilteredBreedsArrLvl3.filter(function (breed) {
+        if ("temperament" in breed) {
+          if (responses.affection === "independent") {
+            return (breed.temperament.toLowerCase().indexOf("aloof") > 0 ||
+              breed.temperament.toLowerCase().indexOf("dignified") > 0 ||
+              breed.temperament.toLowerCase().indexOf("reserved") > 0 ||
+              breed.temperament.toLowerCase().indexOf("receptive") > 0 ||
+              breed.temperament.toLowerCase().indexOf("autonomous") > 0 ||
+              breed.temperament.toLowerCase().indexOf("territorial") > 0 ||
+              breed.temperament.toLowerCase().indexOf("dilligent") > 0 ||
+              breed.temperament.toLowerCase().indexOf("mischievous") > 0 ||
+              breed.temperament.toLowerCase().indexOf("curious") > 0);
+          } else if (responses.affection === "affectionate") {
+            return (breed.temperament.toLowerCase().indexOf("loving") > 0 ||
+              breed.temperament.toLowerCase().indexOf("faithful") > 0 ||
+              breed.temperament.toLowerCase().indexOf("friendly") > 0 ||
+              breed.temperament.toLowerCase().indexOf("warm-hearted") > 0 ||
+              breed.temperament.toLowerCase().indexOf("devoted") > 0 ||
+              breed.temperament.toLowerCase().indexOf("sociable") > 0 ||
+              breed.temperament.toLowerCase().indexOf("trusting") > 0 ||
+              breed.temperament.toLowerCase().indexOf("faithful") > 0 ||
+              breed.temperament.toLowerCase().indexOf("protective") > 0 ||
+              breed.temperament.toLowerCase().indexOf("benevolent") > 0 ||
+              breed.temperament.toLowerCase().indexOf("dutiful") > 0 ||
+              breed.temperament.toLowerCase().indexOf("good-natured") > 0 ||
+              breed.temperament.toLowerCase().indexOf("gay") > 0);
+          }
+        }
+      });
+      console.log(tierFilteredBreedsArrLvl4);
+
+
       // Filter based on purpose
       const purposeFilteredBreedsArr = baseBreedsArr.filter(function (breed) {
         if ("bred_for" in breed) {
@@ -527,86 +623,86 @@ const getBreeds = function () {
               breed.bred_for.toLowerCase().indexOf("an elegant man's fashion statement") > 0 ||
               breed.bred_for.toLowerCase().indexOf("circus performer") > 0 ||
               breed.bred_for.toLowerCase().indexOf("ratting, lapdog, curio") > 0);
+            }
+          }
+        });
+        console.log(purposeFilteredBreedsArr);
+
+
+        // Tiered filter Lvl 5 - Final
+        const tierFilteredBreedsArrLvl5 = tierFilteredBreedsArrLvl4.filter(function (breed) {
+          if ("bred_for" in breed) {
+            if (responses.purpose === "hunting") {
+              return (breed.bred_for.toLowerCase().indexOf("small rodent hunting, lapdog") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("fox hunting, scent hound") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("badger, otter hunting") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("hunting bears") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("hunting raccoon, deer, bear, and cougar.") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("boar herding, hunting, guarding") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("rabbit, hare hunting") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("hunting water game") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("hunting on foot.") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("hunting by scent") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("hunting rats") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("fox bolting") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("hunting with a superior sense of smell.") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("hunting raccoons, night hunting") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("coursing wolves, elk") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("coursing hares") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("coursing gazelle and hare") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("coursing deer") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("bolting of otter, foxes, other vermin") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("bird setting, retrieving") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("bird flushing, retrieving") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("bird flushing and retrieving") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("hunting the american woodcock") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("small vermin hunting") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("hunting big-game like Boar.") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("general hunting") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("hunting birds, small mammals") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("hunting, guarding") > 0);
+            } else if (responses.purpose === "herding") {
+              return (breed.bred_for.toLowerCase().indexOf("sheep herding") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("cattle herding") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("cattle droving") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("driving livestock") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("driving sheep, cattle") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("herding & guarding livestock, farm watch dog") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("herding livestock") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("herding reindeer, guardian, draft") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("cattle herding, ratting, driving cattle to market.") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("herding, guard dog") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("rid the home and farm of vermin, and hunt badger and fox") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("sheep guarding") > 0);
+            } else if (responses.purpose === "guarding") {
+              return (breed.bred_for.toLowerCase().indexOf("guarding") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("guard dogs, defending sheep from predators, mainly wolves, jackals and bears") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("guardian, hunting large game") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("guardian, cart pulling, hunting") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("guardian, appearance.") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("guarding inside the home, companion") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("farms, watchdog, guard duty") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("guardian") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("sheep guarding") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("hunting, guarding") > 0);
+            } else {
+              return (breed.bred_for.toLowerCase().indexOf("companion") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("companion of kings") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("companionship") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("lapdog") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("an elegant man's fashion statement") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("circus performer") > 0 ||
+                breed.bred_for.toLowerCase().indexOf("ratting, lapdog, curio") > 0);
+            }
           }
         }
+        );
+        // Final breed output
+        console.log(tierFilteredBreedsArrLvl5);
       }
+      )
+    }
 
-
-
-
-
-      // const purposeFilteredBreedsArr = baseBreedsArr.filter(function (breed) {
-      //   if ("bred_for" in breed) {
-      //     if (responses.purpose === "hunting") {
-      //       return (breed.bred_for.toLowerCase().indexOf("Small rodent hunting, lapdog") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Fox hunting, scent hound") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Badger, otter hunting") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Hunting bears") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Hunting raccoon, deer, bear, and cougar.") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Boar herding, hunting, guarding") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Rabbit, hare hunting") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Hunting water game") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Hunting on foot.") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Hunting by scent") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Hunting rats") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Fox bolting") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Hunting with a superior sense of smell.") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Hunting raccoons, night hunting") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Coursing wolves, elk") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Coursing hares") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Coursing gazelle and hare") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Coursing deer") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Bolting of otter, foxes, other vermin") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Bird setting, retrieving") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Bird flushing, retrieving") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Bird flushing and retrieving") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Hunting the American woodcock") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Small vermin hunting") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Hunting big-game like Boar.") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("General hunting",) > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Hunting birds, small mammals") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Hunting, guarding") > 0);
-      //     } else if (responses.purpose === "herding") {
-      //       return (breed.bred_for.toLowerCase().indexOf("Sheep herding") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Cattle herding") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Cattle droving") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Driving livestock") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Driving sheep, cattle") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Herding & guarding livestock, farm watch dog") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Herding livestock") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Herding reindeer, guardian, draft") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Cattle herding, Ratting, Driving cattle to market.") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Herding, Guard dog") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Rid the home and farm of vermin, and hunt badger and fox") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Sheep guarding") > 0);
-      //     } else if (responses.purpose === "guarding") {
-      //       return (breed.bred_for.toLowerCase().indexOf("Guarding") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Guard dogs, defending sheep from predators, mainly wolves, jackals and bears") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Guardian, hunting large game") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Guardian, cart pulling, hunting") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Guardian, appearance.") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Guarding inside the home, companion") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Farms, watchdog, guard duty") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Guardian") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Sheep guarding") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Hunting, guarding") > 0);
-      //     } else {
-      //       return (breed.bred_for.toLowerCase().indexOf("Companion") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Companion of kings") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Companionship") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Lapdog") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("An elegant man's fashion statement") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Circus performer") > 0 ||
-      //         breed.bred_for.toLowerCase().indexOf("Ratting, lapdog, curio") > 0);
-      //     }
-      //   }
-      // }
-      );
-
-      // Final filtered breeds
-      console.log(purposeFilteredBreedsArr);
-    })
-};
 
 const displayChosenBreed = function () {
 
