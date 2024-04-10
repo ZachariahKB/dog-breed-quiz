@@ -1,34 +1,23 @@
 const takeQuizBtnEl = document.querySelector('#take-quiz-btn');
 const quizSubmitEl = document.querySelector('#quiz-submit');
-const primaryResultsEl = document.querySelector('#chosen-breed');
-const altResultsEl = document.querySelector('#alt-breeds');
-const feelingLuckyBtnEl = document.querySelector('#feeling-lucky-btn');
 
 // Pull the quiz response history from local storage or, if there isn't one, create a new array
-let responses = JSON.parse(localStorage.getItem("quizResponseHistory")) || [];
+let responseHistory = JSON.parse(localStorage.getItem("quizResponseHistory")) || [];
 
 // Hide the quiz initially
 document.getElementById('quiz-section').style.display = 'none';
 
 // Show the quiz and hide the take quiz button
-const showQuiz = function () {
+const showQuiz = function (event) {
   document.getElementById('quiz-section').style.display = 'block';
   document.getElementById('quiz-btn-section').style.display = 'none';
 };
 
-const buttonClickHandler = function (event) {
-  showQuiz();
-
-};
-
+// When quiz is submitted, user answers are stored locally to be references on results.html
 const quizSubmitHandler = function (event) {
   event.preventDefault();
-
-  // Redirect to results page - UNCOMMENT WHEN READY
-  // window.location.href = 'results.html'
-  getBreeds();
-  // displayChosenBreed();
-  // displayAltBreeds();
+  storeUserInput();
+  window.location.href = 'results.html'
 };
 
 // Fetch data from the API
@@ -47,8 +36,7 @@ fetch(apiUrl)
     console.log(baseBreedsArr);
   });
 
-// Pulls dog breed information from the dogApi
-const getBreeds = function () {
+const storeUserInput = function () {
   const responses = {
     size: document.querySelector('input[name="choice1"]:checked').value,
     energy: document.querySelector('input[name="choice2"]:checked').value,
@@ -56,8 +44,28 @@ const getBreeds = function () {
     affection: document.querySelector('input[name="choice4"]:checked').value,
     purpose: document.querySelector('input[name="choice5"]:checked').value,
   };
-  localStorage.setItem("quizResponseHistory", JSON.stringify(responses));
+
+  // Ensure responseHistory is defined here
+  if (!Array.isArray(responseHistory)) {
+    responseHistory = [];
+  }
+  
+  responseHistory.push(responses);
+  localStorage.setItem("quizResponseHistory", JSON.stringify(responseHistory));
   console.log(responses);
+}
+
+// Pulls dog breed information from the dogApi
+const getBreeds = function () {
+  // const responses = {
+  //   size: document.querySelector('input[name="choice1"]:checked').value,
+  //   energy: document.querySelector('input[name="choice2"]:checked').value,
+  //   confidence: document.querySelector('input[name="choice3"]:checked').value,
+  //   affection: document.querySelector('input[name="choice4"]:checked').value,
+  //   purpose: document.querySelector('input[name="choice5"]:checked').value,
+  // };
+  // localStorage.setItem("quizResponseHistory", JSON.stringify(responses));
+  // console.log(responses);
 
   // Map user's Q2 answer to API dog breed characteristics
   const traitMapping = {
@@ -667,52 +675,81 @@ const getBreeds = function () {
   console.log(`Final Results: ${JSON.stringify(tierFilteredBreedsArrLvl5)}`)
 };
 
+const createChosenBreedCard = function (breeds) {
+  const primaryBreed = tierFilteredBreedsArrLvl5[0];
+  const primaryBreedImageUrl = `https://cdn2.thedogapi.com/images/${breeds.reference_image_id}`;
+
+  const primaryBreedCard = document.createElement('div');
+  primaryBreedCard.classList.add('card', 'primary-breed-card');
+
+  const primaryBreedName = docuement.createElement('h2');
+  primaryBreedName.textContent = `Your new best friend is a ${primaryBreed.name}`
+
+  const primaryBreedImage = document.createElement('img');
+  primaryBreedImage.setAttribute("src", primaryBreedImageUrl);
+  primaryBreedImage.textContent = `${primaryBreedImageUrl}`;
+
+  primaryBreedCard.append(primaryBreedName, primaryBreedImage)
+
+  return primaryBreedCard;
+};
+
 const displayChosenBreed = function () {
-  const url = `https://api.thedogapi.com/v1/breeds`;
-  const api_key = "live_Hub7CF5mUcP0zp9NtRWJf5gUHyJYswrPmmZUPq8TfUODueobaOpOEzZfeQgOLQLe"
-  let storedBreeds = []
-
-  fetch(url, {
-    headers: {
-      'x-api-key': api_key
-    }
-  })
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-
-      //filter to only include those with an `image` object
-      data = data.filter(img => img.image?.url != null)
-
-      storedBreeds = data;
-
-      for (let i = 0; i < storedBreeds.length; i++) {
-        const breed = storedBreeds[i];
-        let option = document.createElement('option');
-
-        //skip any breeds that don't have an image
-        if (!breed.image) continue
-
-        //use the current array index
-        option.value = i;
-        option.innerHTML = `${breed.name}`;
-        document.getElementById('breed_selector').appendChild(option);
-
-      }
-      //show the first breed by default
-      showBreedImage(0)
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-
-  function showBreedImage(index) {
-    document.getElementById("breed_image").src = storedBreeds[index].image.url;
-    document.getElementById("breed_json").textContent = storedBreeds[index].temperament
-    document.getElementById("wiki_link").href = storedBreeds[index].wikipedia_url
-    document.getElementById("wiki_link").innerHTML = storedBreeds[index].wikipedia_url
+  if (tierFilteredBreedsArrLvl5.length === 0) {
+    return;
   }
+
+  // Display today's weather at the top
+  const primaryBreed = tierFilteredBreedsArrLvl5[0]; // Assuming the first item in the forecast array represents today's weather
+  const primaryBreedCard = createChosenBreedCard(primaryBreed);
+  document.getElementById('chosen-breed').innerHTML = ''; // Clear previous content
+  document.getElementById('chosen-breed').appendChild(primaryBreedCard);
+}
+
+
+// const api_key = "live_Hub7CF5mUcP0zp9NtRWJf5gUHyJYswrPmmZUPq8TfUODueobaOpOEzZfeQgOLQLe"
+// let storedBreeds = []
+
+// fetch(apiUrl, {
+//   headers: {
+//     'x-api-key': api_key
+//   }
+// })
+//   .then((response) => {
+//     return response.json();
+//   })
+//   .then((data) => {
+
+//     //filter to only include those with an `image` object
+//     data = data.filter(img => img.image?.apiUrl != null)
+
+//     storedBreeds = data;
+
+//     for (let i = 0; i < storedBreeds.length; i++) {
+//       const breed = storedBreeds[i];
+//       let option = document.createElement('<div>');
+
+//       //skip any breeds that don't have an image
+//       if (!breed.image) continue
+
+//       //use the current array index
+//       option.value = i;
+//       option.innerHTML = `${breed.name}`;
+//       document.getElementById('chosen-breed').appendChild(option);
+
+//     }
+//     //show the first breed by default
+//     showBreedImage(0)
+//   })
+//   .catch(function (error) {
+//     console.log(error);
+//   });
+
+function showBreedImage(index) {
+  document.getElementById("breed_image").src = storedBreeds[index].image.apiUrl;
+  document.getElementById("breed_json").textContent = storedBreeds[index].temperament
+  // document.getElementById("wiki_link").href = storedBreeds[index].wikipedia_url
+  // document.getElementById("wiki_link").innerHTML = storedBreeds[index].wikipedia_url
 };
 
 const displayAltBreeds = function () {
@@ -733,6 +770,6 @@ fetch("https://dogapi.dog/api/v2/facts?limit=2").then(res => res.json())
 
 
 // Event listeners to trigger the above functions
-takeQuizBtnEl.addEventListener('click', buttonClickHandler);
+takeQuizBtnEl.addEventListener('click', showQuiz);
 quizSubmitEl.addEventListener('click', quizSubmitHandler);
 // feelingLuckyBtnEl.addEventListener('click', displayFeelingLucky);
