@@ -307,7 +307,27 @@ const getBreeds = function () {
         "Hunting big-game like Boar.",
         "General hunting",
         "Hunting birds, small mammals",
-        "Hunting, guarding"
+        "Hunting, guarding",
+        "livestock guardian, hunting",
+        "guarding the homestead, farm work.",
+        "turkey retrieving",
+        "water retriever",
+        "big-game hunting",
+        "hunting rabbits",
+        "find and point gamebirds",
+        "all purpose water dog, fishing aid",
+        `gundog, "swamp-tromping", flushing, pointing, and retrieving water fowl & game birds`,
+        "water retrieval dog in the marshes of romagna",
+        "big game hunting, guarding",
+        "good luck charms, mascots, watchdogs, herding dogs, and companions",
+        `luring ducks into traps - "tolling"`,
+        "hunt and kill vermin in stables",
+        "hunting in the mountains of japan, alert watchdog",
+        "large game trailing and versatile gundog",
+        "flushing and retrieving birds",
+        "pointing and trailing",
+        "accompanying ladies on long sea voyages, ratters onboard ship.",
+        "coursing, racing",
       ],
       "herding": [
         "Sheep herding",
@@ -322,6 +342,13 @@ const getBreeds = function () {
         "Herding, Guard dog",
         "Rid the home and farm of vermin, and hunt badger and fox",
         "Sheep guarding",
+        "livestock guardian, hunting",
+        "stock herding",
+        "guarding the homestead, farm work.",
+        "sheep herder",
+        "big game hunting, guarding",
+        "good luck charms, mascots, watchdogs, herding dogs, and companions",
+        "driving stock to market in northern wales",
       ],
       "guarding": [
         "Guarding",
@@ -331,7 +358,12 @@ const getBreeds = function () {
         "Guardian, appearance.",
         "Guarding inside the home, companion",
         "Farms, watchdog, guard duty",
-        "Guardian"
+        "Guardian",
+        "barge watchdog",
+        "good luck charms, mascots, watchdogs, herding dogs, and companions",
+        "hunting in the mountains of japan, alert watchdog",
+        "carriage dog - trot alongside carriages to protect the occupants from banditry or other interference",
+        "draft, search, rescue",
       ],
       "companionship": [
         "Companion",
@@ -340,7 +372,12 @@ const getBreeds = function () {
         "Lapdog",
         "An elegant man's fashion statement",
         "Circus performer",
-        "Ratting, lapdog, curio"
+        "Ratting, lapdog, curio",
+        "barge watchdog",
+        "good luck charms, mascots, watchdogs, herding dogs, and companions",
+        "hunting in the mountains of japan, alert watchdog",
+        "carriage dog - trot alongside carriages to protect the occupants from banditry or other interference",
+        "draft, search, rescue",
       ]
     }
   };
@@ -492,7 +529,7 @@ const getBreeds = function () {
       });
       console.log(tierFilteredBreedsArrLvl3);
 
-      
+
       // Filter based on affection
       const affectionFilteredBreedsArr = baseBreedsArr.filter(function (breed) {
         if ("temperament" in breed) {
@@ -587,6 +624,27 @@ const getBreeds = function () {
               breed.bred_for.toLowerCase().indexOf("bird flushing and retrieving") > 0 ||
               breed.bred_for.toLowerCase().indexOf("hunting the american woodcock") > 0 ||
               breed.bred_for.toLowerCase().indexOf("small vermin hunting") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("livestock guardian, hunting") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("guarding the homestead, farm work.") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("turkey retrieving") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("water retriever") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("big-game hunting") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunting rabbits") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("find and point gamebirds") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("all purpose water dog, fishing aid") > 0 ||
+              breed.bred_for.toLowerCase().indexOf(`gundog, "swamp-tromping", flushing, pointing, and retrieving water fowl & game birds`) > 0 ||
+              breed.bred_for.toLowerCase().indexOf("water retrieval dog in the marshes of romagna") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("big game hunting, guarding") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("good luck charms, mascots, watchdogs, herding dogs, and companions") > 0 ||
+              breed.bred_for.toLowerCase().indexOf(`luring ducks into traps - "tolling"`) > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunt and kill vermin in stables") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunting in the mountains of japan, alert watchdog") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("large game trailing and versatile gundog") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunting the american woodcock") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("flushing and retrieving birds") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("pointing and trailing") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("accompanying ladies on long sea voyages, ratters onboard ship.") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("coursing, racing") > 0 ||
               breed.bred_for.toLowerCase().indexOf("hunting big-game like Boar.") > 0 ||
               breed.bred_for.toLowerCase().indexOf("general hunting") > 0 ||
               breed.bred_for.toLowerCase().indexOf("hunting birds, small mammals") > 0 ||
@@ -603,6 +661,13 @@ const getBreeds = function () {
               breed.bred_for.toLowerCase().indexOf("cattle herding, ratting, driving cattle to market.") > 0 ||
               breed.bred_for.toLowerCase().indexOf("herding, guard dog") > 0 ||
               breed.bred_for.toLowerCase().indexOf("rid the home and farm of vermin, and hunt badger and fox") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("livestock guardian, hunting") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("stock herding") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("guarding the homestead, farm work.") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("sheep herder") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("big game hunting, guarding") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("good luck charms, mascots, watchdogs, herding dogs, and companions") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("driving stock to market in northern wales") > 0 ||
               breed.bred_for.toLowerCase().indexOf("sheep guarding") > 0);
           } else if (responses.purpose === "guarding") {
             return (breed.bred_for.toLowerCase().indexOf("guarding") > 0 ||
@@ -614,6 +679,11 @@ const getBreeds = function () {
               breed.bred_for.toLowerCase().indexOf("farms, watchdog, guard duty") > 0 ||
               breed.bred_for.toLowerCase().indexOf("guardian") > 0 ||
               breed.bred_for.toLowerCase().indexOf("sheep guarding") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("barge watchdog") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("good luck charms, mascots, watchdogs, herding dogs, and companions") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunting in the mountains of japan, alert watchdog") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("carriage dog - trot alongside carriages to protect the occupants from banditry or other interference") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("draft, search, rescue") > 0 ||
               breed.bred_for.toLowerCase().indexOf("hunting, guarding") > 0);
           } else {
             return (breed.bred_for.toLowerCase().indexOf("companion") > 0 ||
@@ -622,86 +692,126 @@ const getBreeds = function () {
               breed.bred_for.toLowerCase().indexOf("lapdog") > 0 ||
               breed.bred_for.toLowerCase().indexOf("an elegant man's fashion statement") > 0 ||
               breed.bred_for.toLowerCase().indexOf("circus performer") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("lapdog") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("good luck charms, mascots, watchdogs, herding dogs, and companions") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("accompanying ladies on long sea voyages, ratters onboard ship.") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("swimming, carrying backpacks, pulling carts or sleds") > 0 ||
               breed.bred_for.toLowerCase().indexOf("ratting, lapdog, curio") > 0);
-            }
-          }
-        });
-        console.log(purposeFilteredBreedsArr);
-
-
-        // Tiered filter Lvl 5 - Final
-        const tierFilteredBreedsArrLvl5 = tierFilteredBreedsArrLvl4.filter(function (breed) {
-          if ("bred_for" in breed) {
-            if (responses.purpose === "hunting") {
-              return (breed.bred_for.toLowerCase().indexOf("small rodent hunting, lapdog") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("fox hunting, scent hound") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("badger, otter hunting") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("hunting bears") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("hunting raccoon, deer, bear, and cougar.") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("boar herding, hunting, guarding") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("rabbit, hare hunting") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("hunting water game") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("hunting on foot.") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("hunting by scent") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("hunting rats") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("fox bolting") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("hunting with a superior sense of smell.") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("hunting raccoons, night hunting") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("coursing wolves, elk") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("coursing hares") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("coursing gazelle and hare") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("coursing deer") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("bolting of otter, foxes, other vermin") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("bird setting, retrieving") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("bird flushing, retrieving") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("bird flushing and retrieving") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("hunting the american woodcock") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("small vermin hunting") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("hunting big-game like Boar.") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("general hunting") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("hunting birds, small mammals") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("hunting, guarding") > 0);
-            } else if (responses.purpose === "herding") {
-              return (breed.bred_for.toLowerCase().indexOf("sheep herding") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("cattle herding") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("cattle droving") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("driving livestock") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("driving sheep, cattle") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("herding & guarding livestock, farm watch dog") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("herding livestock") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("herding reindeer, guardian, draft") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("cattle herding, ratting, driving cattle to market.") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("herding, guard dog") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("rid the home and farm of vermin, and hunt badger and fox") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("sheep guarding") > 0);
-            } else if (responses.purpose === "guarding") {
-              return (breed.bred_for.toLowerCase().indexOf("guarding") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("guard dogs, defending sheep from predators, mainly wolves, jackals and bears") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("guardian, hunting large game") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("guardian, cart pulling, hunting") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("guardian, appearance.") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("guarding inside the home, companion") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("farms, watchdog, guard duty") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("guardian") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("sheep guarding") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("hunting, guarding") > 0);
-            } else {
-              return (breed.bred_for.toLowerCase().indexOf("companion") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("companion of kings") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("companionship") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("lapdog") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("an elegant man's fashion statement") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("circus performer") > 0 ||
-                breed.bred_for.toLowerCase().indexOf("ratting, lapdog, curio") > 0);
-            }
           }
         }
-        );
-        // Final breed output
-        console.log(tierFilteredBreedsArrLvl5);
+      });
+      console.log(purposeFilteredBreedsArr);
+
+
+      // Tiered filter Lvl 5 - Final
+      const tierFilteredBreedsArrLvl5 = tierFilteredBreedsArrLvl4.filter(function (breed) {
+        if ("bred_for" in breed) {
+          if (responses.purpose === "hunting") {
+            return (breed.bred_for.toLowerCase().indexOf("small rodent hunting, lapdog") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("fox hunting, scent hound") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("badger, otter hunting") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunting bears") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunting raccoon, deer, bear, and cougar.") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("boar herding, hunting, guarding") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("rabbit, hare hunting") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunting water game") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunting on foot.") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunting by scent") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunting rats") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("fox bolting") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunting with a superior sense of smell.") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunting raccoons, night hunting") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("coursing wolves, elk") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("coursing hares") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("coursing gazelle and hare") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("coursing deer") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("bolting of otter, foxes, other vermin") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("bird setting, retrieving") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("bird flushing, retrieving") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("bird flushing and retrieving") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunting the american woodcock") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("small vermin hunting") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunting big-game like Boar.") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("general hunting") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunting birds, small mammals") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("livestock guardian, hunting") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("guarding the homestead, farm work.") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("turkey retrieving") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("water retriever") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("big-game hunting") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunting rabbits") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("find and point gamebirds") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("all purpose water dog, fishing aid") > 0 ||
+              breed.bred_for.toLowerCase().indexOf(`gundog, "swamp-tromping", flushing, pointing, and retrieving water fowl & game birds`) > 0 ||
+              breed.bred_for.toLowerCase().indexOf("water retrieval dog in the marshes of romagna") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("big game hunting, guarding") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("good luck charms, mascots, watchdogs, herding dogs, and companions") > 0 ||
+              breed.bred_for.toLowerCase().indexOf(`luring ducks into traps - "tolling"`) > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunt and kill vermin in stables") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunting in the mountains of japan, alert watchdog") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("large game trailing and versatile gundog") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunting the american woodcock") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("flushing and retrieving birds") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("pointing and trailing") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("accompanying ladies on long sea voyages, ratters onboard ship.") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("coursing, racing") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunting, guarding") > 0);
+          } else if (responses.purpose === "herding") {
+            return (breed.bred_for.toLowerCase().indexOf("sheep herding") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("cattle herding") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("cattle droving") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("driving livestock") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("driving sheep, cattle") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("herding & guarding livestock, farm watch dog") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("herding livestock") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("herding reindeer, guardian, draft") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("cattle herding, ratting, driving cattle to market.") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("herding, guard dog") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("rid the home and farm of vermin, and hunt badger and fox") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("livestock guardian, hunting") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("stock herding") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("guarding the homestead, farm work.") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("sheep herder") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("big game hunting, guarding") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("good luck charms, mascots, watchdogs, herding dogs, and companions") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("driving stock to market in northern wales") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("sheep guarding") > 0);
+          } else if (responses.purpose === "guarding") {
+            return (breed.bred_for.toLowerCase().indexOf("guarding") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("guard dogs, defending sheep from predators, mainly wolves, jackals and bears") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("guardian, hunting large game") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("guardian, cart pulling, hunting") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("guardian, appearance.") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("guarding inside the home, companion") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("farms, watchdog, guard duty") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("guardian") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("sheep guarding") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("barge watchdog") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("good luck charms, mascots, watchdogs, herding dogs, and companions") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunting in the mountains of japan, alert watchdog") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("carriage dog - trot alongside carriages to protect the occupants from banditry or other interference") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("draft, search, rescue") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("hunting, guarding") > 0);
+          } else {
+            return (breed.bred_for.toLowerCase().indexOf("companion") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("companion of kings") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("companionship") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("lapdog") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("an elegant man's fashion statement") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("circus performer") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("good luck charms, mascots, watchdogs, herding dogs, and companions") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("accompanying ladies on long sea voyages, ratters onboard ship.") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("swimming, carrying backpacks, pulling carts or sleds") > 0 ||
+              breed.bred_for.toLowerCase().indexOf("ratting, lapdog, curio") > 0);
+          }
+        }
       }
-      )
+      );
+      // Final breed output
+      console.log(tierFilteredBreedsArrLvl5);
     }
+    )
+}
 
 
 const displayChosenBreed = function () {
