@@ -405,7 +405,6 @@ const getBreeds = function () {
 
       // Filter based on confidence
       const confidenceFilteredBreedsArr = energyFilteredBreedsArr.filter(function (breed) {
-        console.log(breed);
         if ("temperament" in breed) {
           if (responses.confidence === "confident") {
             return (breed.temperament.toLowerCase().indexOf("assertive") > 0 ||
@@ -471,7 +470,7 @@ const getBreeds = function () {
               breed.temperament.toLowerCase().indexOf("Fox hunting, scent hound") > 0 ||
               breed.temperament.toLowerCase().indexOf("Badger, otter hunting") > 0 ||
               breed.temperament.toLowerCase().indexOf("Hunting bears") > 0 ||
-              breed.temperament.toLowerCase().indexOf("Hunting raccoon, deer, bear, and cougar.,") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Hunting raccoon, deer, bear, and cougar.") > 0 ||
               breed.temperament.toLowerCase().indexOf("Boar herding, hunting, guarding") > 0 ||
               breed.temperament.toLowerCase().indexOf("Rabbit, hare hunting") > 0 ||
               breed.temperament.toLowerCase().indexOf("Hunting water game") > 0 ||
@@ -491,78 +490,51 @@ const getBreeds = function () {
               breed.temperament.toLowerCase().indexOf("Bird flushing and retrieving") > 0 ||
               breed.temperament.toLowerCase().indexOf("Hunting the American woodcock") > 0 ||
               breed.temperament.toLowerCase().indexOf("Small vermin hunting") > 0 ||
-              breed.temperament.toLowerCase().indexOf("Hunting big-game like Boar.",) > 0 ||
+              breed.temperament.toLowerCase().indexOf("Hunting big-game like Boar.") > 0 ||
               breed.temperament.toLowerCase().indexOf("General hunting",) > 0 ||
-              breed.temperament.toLowerCase().indexOf("Hunting birds, small mammals",) > 0 ||
+              breed.temperament.toLowerCase().indexOf("Hunting birds, small mammals") > 0 ||
               breed.temperament.toLowerCase().indexOf("Hunting, guarding") > 0);
           } else if (responses.energy === "herding") {
-            return (breed.temperament.toLowerCase().indexOf("energetic") > 0 ||
-              breed.temperament.toLowerCase().indexOf("active") > 0 ||
-              breed.temperament.toLowerCase().indexOf("fun-loving") > 0 ||
-              breed.temperament.toLowerCase().indexOf("spirited") > 0 ||
-              breed.temperament.toLowerCase().indexOf("excitable") > 0 ||
-              breed.temperament.toLowerCase().indexOf("bubbly") > 0 ||
-              breed.temperament.toLowerCase().indexOf("adventurous") > 0 ||
-              breed.temperament.toLowerCase().indexOf("wild") > 0 ||
-              breed.temperament.toLowerCase().indexOf("hardworking") > 0 ||
-              breed.temperament.toLowerCase().indexOf("courageous") > 0 ||
-              breed.temperament.toLowerCase().indexOf("feisty") > 0);
+            return (breed.temperament.toLowerCase().indexOf("Sheep herding") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Cattle herding") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Cattle droving") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Driving livestock") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Driving sheep, cattle") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Herding & guarding livestock, farm watch dog") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Herding livestock") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Herding reindeer, guardian, draft") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Cattle herding, Ratting, Driving cattle to market.") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Herding, Guard dog") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Rid the home and farm of vermin, and hunt badger and fox") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Sheep guarding") > 0);
           } else if (responses.energy === "guarding") {
-            return (breed.temperament.toLowerCase().indexOf("energetic") > 0 ||
-              breed.temperament.toLowerCase().indexOf("active") > 0 ||
-              breed.temperament.toLowerCase().indexOf("fun-loving") > 0 ||
-              breed.temperament.toLowerCase().indexOf("spirited") > 0 ||
-              breed.temperament.toLowerCase().indexOf("excitable") > 0 ||
-              breed.temperament.toLowerCase().indexOf("bubbly") > 0 ||
-              breed.temperament.toLowerCase().indexOf("adventurous") > 0 ||
-              breed.temperament.toLowerCase().indexOf("wild") > 0 ||
-              breed.temperament.toLowerCase().indexOf("hardworking") > 0 ||
-              breed.temperament.toLowerCase().indexOf("courageous") > 0 ||
-              breed.temperament.toLowerCase().indexOf("feisty") > 0);
+            return (breed.temperament.toLowerCase().indexOf("Guarding") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Guard dogs, defending sheep from predators, mainly wolves, jackals and bears") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Guardian, hunting large game") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Guardian, cart pulling, hunting") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Guardian, appearance.") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Guarding inside the home, companion") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Farms, watchdog, guard duty") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Guardian") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Sheep guarding") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Hunting, guarding") > 0);
           } else {
-            return (breed.temperament.toLowerCase().indexOf("energetic") > 0 ||
-              breed.temperament.toLowerCase().indexOf("active") > 0 ||
-              breed.temperament.toLowerCase().indexOf("fun-loving") > 0 ||
-              breed.temperament.toLowerCase().indexOf("spirited") > 0 ||
-              breed.temperament.toLowerCase().indexOf("excitable") > 0 ||
-              breed.temperament.toLowerCase().indexOf("bubbly") > 0 ||
-              breed.temperament.toLowerCase().indexOf("adventurous") > 0 ||
-              breed.temperament.toLowerCase().indexOf("wild") > 0 ||
-              breed.temperament.toLowerCase().indexOf("hardworking") > 0 ||
-              breed.temperament.toLowerCase().indexOf("courageous") > 0 ||
-              breed.temperament.toLowerCase().indexOf("feisty") > 0);
+            return (breed.temperament.toLowerCase().indexOf("Companion") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Companion of kings") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Companionship") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Lapdog") > 0 ||
+              breed.temperament.toLowerCase().indexOf("An elegant man's fashion statement") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Circus performer") > 0 ||
+              breed.temperament.toLowerCase().indexOf("Ratting, lapdog, curio") > 0);
           }
         }
       }
       );
 
-
       // Final filtered breeds
       console.log(purposeFilteredBreedsArr);
     })
-  // .catch(function (error) {
-  //   console.error('Error fetching data:', error);
-  // });
 };
-
-
-//       const result = await response.json();
-//       baseBreedArr = breedArr.concat(result);
-//     }
-//     return breedArr;
-//   } catch (error) {
-//     console.log("Error:", error);
-//     return [];
-//   }
-// }
-
-// const traitArrays = Object.values(responses).map((selection, index) => {
-//   const question = "question" + (index + 1);
-//   return traitMapping[question][selection];
-// });
-
-// const dogApiUrl = `api.thedogapi.com/v1/breeds/search?size=${size}&temperament=${temperament}&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&api_key=${dogApiKey}`
-// const dogApiKey = "live_Lh6idGIX2s0O1fSTNNNZgzh7TIrEKbLJbyj3sglCt6SuVDT7mcN4JhVL2kvJA5MO"
 
 const displayChosenBreed = function () {
 
@@ -575,29 +547,6 @@ const displpayAltBreeds = function () {
 const displayFeelingLucky = function () {
 
 };
-
-
-// const quizResults = function(event){
-//     const size = event.target.getAttribute('q1');
-//     const 
-
-//     const dogApiUrl = `api.thedogapi.com/v1/breeds/search?size=${size}&temperament=${temperament}&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&api_key=${dogApiKey}`
-//     const dogApiKey = "live_Lh6idGIX2s0O1fSTNNNZgzh7TIrEKbLJbyj3sglCt6SuVDT7mcN4JhVL2kvJA5MO"
-
-// fetch(`https://dogapi.dog/api/v2/breeds?_limit=-1`)
-// .then(res => res.json())
-// .then(data => console.log(data)); 
-
-//     fetch(dogApiUrl)
-//         .then(function (response)) {
-//             if (response.ok)
-//                 return response.json();
-//             else {
-//                 // REMOVE ALERT AND REPLACE WITH MODAL
-//                 alert(`Error:${response.statusText}`);
-//             }
-//         }.then(function ())
-// }
 
 // Event listeners to trigger the above functions
 takeQuizBtnEl.addEventListener('click', buttonClickHandler);
