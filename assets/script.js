@@ -840,6 +840,14 @@ const displayFeelingLucky = function () {
 
 };
 
+fetch("https://dogapi.dog/api/v2/facts?limit=2").then(res=>res.json())
+.then(data=>{
+  console.log(data)
+  document.getElementById("fact1").textContent=data.data[0].attributes.body
+  document.getElementById("fact2").textContent=data.data[1].attributes.body
+})
+
+
 // Event listeners to trigger the above functions
 takeQuizBtnEl.addEventListener('click', buttonClickHandler);
 quizSubmitEl.addEventListener('click', quizSubmitHandler);
