@@ -100,3 +100,13 @@ footer h6 {
     font-size: 1.5vw; /* Adjust font size based on viewport width */
     text-transform: uppercase;
 }
+
+/* Centering the "Take the Quiz" button */
+#quiz-btn-section {
+    display: flex;
+    justify-content: center;
+}
+
+#take-quiz-btn {
+    /* Add any additional styles for the button here */
+}
