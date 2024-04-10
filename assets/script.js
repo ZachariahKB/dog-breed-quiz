@@ -1,3 +1,54 @@
+const url = `https://api.thedogapi.com/v1/breeds`;
+const api_key = "live_Hub7CF5mUcP0zp9NtRWJf5gUHyJYswrPmmZUPq8TfUODueobaOpOEzZfeQgOLQLe"
+let storedBreeds = []
+
+ fetch(url,{headers: {
+      'x-api-key': api_key
+    }})
+ .then((response) => {
+   return response.json();
+ })
+.then((data) => {
+   
+   //filter to only include those with an `image` object
+   data = data.filter(img=> img.image?.url!=null)
+   
+  storedBreeds = data;
+   
+   for (let i = 0; i < storedBreeds.length; i++) {
+    const breed = storedBreeds[i];
+    let option = document.createElement('option');
+     
+     //skip any breeds that don't have an image
+     if(!breed.image)continue
+     
+    //use the current array index
+    option.value = i;
+    option.innerHTML = `${breed.name}`;
+document.getElementById('breed_selector').appendChild(option);
+    
+    }
+   //show the first breed by default
+   showBreedImage(0)
+})
+.catch(function(error) {
+   console.log(error);
+});
+
+function showBreedImage(index)
+{ 
+  document.getElementById("breed_image").src= storedBreeds[index].image.url;
+  
+  document.getElementById("breed_json").textContent= storedBreeds[index].temperament
+  
+  
+  document.getElementById("wiki_link").href= storedBreeds[index].wikipedia_url
+  document.getElementById("wiki_link").innerHTML= storedBreeds[index].wikipedia_url
+}
+
+
+
+
 const takeQuizBtnEl = document.querySelector('#take-quiz-btn');
 const quizSubmitEl = document.querySelector('#quiz-submit');
 const feelingLuckyBtnEl = document.querySelector('#feeling-lucky-btn');
@@ -676,6 +727,14 @@ const displpayAltBreeds = function () {
 const displayFeelingLucky = function () {
 
 };
+
+fetch("https://dogapi.dog/api/v2/facts?limit=2").then(res=>res.json())
+.then(data=>{
+  console.log(data)
+  document.getElementById("fact1").textContent=data.data[0].attributes.body
+  document.getElementById("fact2").textContent=data.data[1].attributes.body
+})
+
 
 // Event listeners to trigger the above functions
 takeQuizBtnEl.addEventListener('click', buttonClickHandler);
