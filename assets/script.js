@@ -310,10 +310,6 @@ const getBreeds = function () {
         "Pointing and trailing",
         "Accompanying ladies on long sea voyages, ratters onboard ship.",
         "Coursing, racing",
-        "hunting big-game like Boar.",
-        "general hunting",
-        "hunting birds, small mammals",
-        "hunting, guarding",
       ],
       "herding": [
         "Sheep herding",
@@ -361,12 +357,7 @@ const getBreeds = function () {
         "An elegant man's fashion statement",
         "Circus performer",
         "Ratting, lapdog, curio",
-
-        "Barge watchdog",
         "Good luck charms, mascots, watchdogs, herding dogs, and companions",
-        "Hunting in the mountains of japan, alert watchdog",
-        "Carriage dog - trot alongside carriages to protect the occupants from banditry or other interference",
-        "Draft, search, rescue",
       ]
     }
   };
@@ -498,7 +489,7 @@ const getBreeds = function () {
 
       // Affection Filter
       function filterBreedsByAffection(breedsArr, affection) {
-        
+
         return breedsArr.filter(function (breed) {
           if (affection === "nopref4") {
             return breedsArr; // Return the original array without applying any filters
@@ -602,7 +593,7 @@ const getBreeds = function () {
                 bredForLowerCase.includes("pointing and trailing") > 0 ||
                 bredForLowerCase.includes("accompanying ladies on long sea voyages, ratters onboard ship.") > 0 ||
                 bredForLowerCase.includes("coursing, racing") > 0 ||
-                bredForLowerCase.includes("hunting big-game like Boar.") > 0 ||
+                bredForLowerCase.includes("hunting big-game like boar.") > 0 ||
                 bredForLowerCase.includes("general hunting") > 0 ||
                 bredForLowerCase.includes("hunting birds, small mammals") > 0 ||
                 bredForLowerCase.includes("hunting, guarding") > 0)
@@ -665,6 +656,7 @@ const getBreeds = function () {
       }
       // Usage:
       const purposeFilteredBreedsArr = filterBreedsByPurpose(baseBreedsArr, responses.purpose);
+      console.log("Purpose Filtered Breeds Array")
       console.log(purposeFilteredBreedsArr);
 
       // Tiered filter Lvl 5 - Final
