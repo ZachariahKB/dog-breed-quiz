@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/reset.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/styles.css">
 
     <title>The Doggy Dog Breed Quiz Results</title>
@@ -15,8 +16,14 @@
         <h1>The Doggy Dog Breed Quiz</h1>
     </header>
     <main>
-        <section id="chosen-breed">
-        </section>
+        <!-- <section id="chosen-breed">
+        </section> -->
+        <!-- Image, name, and temperament display from feature/gordon-->
+        <div class="flex flex-col items-center">
+            <img id="breed_image" src="" alt="Breed Image" class="max-w-md mb-4">
+            <p id="breed_name" class="text-lg font-bold mb-2"></p>
+            <p id="breed_json" class="text-gray-700"></p>
+        </div>
         <section id="alt-breeds">
         </section>
         <!-- <button id="feeling-lucky-btn">Feeling Lucky?</button> -->
