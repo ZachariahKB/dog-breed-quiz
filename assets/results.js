@@ -4,6 +4,7 @@ const feelingLuckyBtnEl = document.querySelector('#feeling-lucky-btn');
 
 // Pull the quiz response history from local storage or, if there isn't one, create a new array
 let responses = JSON.parse(localStorage.getItem("quizResponseHistory")) || [];
+console.log(responses);
 
 // Fetch data from the API
 const apiUrl = "https://api.thedogapi.com/v1/breeds";
@@ -19,13 +20,14 @@ fetch(apiUrl)
     .then(function (breeds) {
         baseBreedsArr = breeds;
         console.log(baseBreedsArr);
+        getBreeds();
     });
 
 // Pulls dog breed information from the dogApi
 const getBreeds = function () {
 
     // Get the first response from the response history array
-    const firstResponse = quizResponseHistory[0];
+    const firstResponse = responses[0];
 
     // Now you can reference the individual properties of the first response
     const affection = firstResponse.affection;
@@ -406,7 +408,7 @@ const getBreeds = function () {
         )
     }
 
-    // Usage:
+    // Filter base array on Energy:
     const energyFilteredBreedsArr = filterBreedsByTemperament(baseBreedsArr, energy);
     console.log("Energy Filtered Breeds Array")
     console.log(energyFilteredBreedsArr);
@@ -454,7 +456,7 @@ const getBreeds = function () {
         });
     }
 
-    // Usage:
+  // Filter base array on Confidence: 
     const confidenceFilteredBreedsArr = filterBreedsByConfidence(baseBreedsArr, confidence);
     console.log("Confidence Filtered Breeds Array")
     console.log(confidenceFilteredBreedsArr);
@@ -505,7 +507,7 @@ const getBreeds = function () {
         });
     }
 
-    // Usage:
+  // Filter base array on Affection: 
     const affectionFilteredBreedsArr = filterBreedsByAffection(baseBreedsArr, affection);
     console.log("Affection Filtered Breeds Array")
     console.log(affectionFilteredBreedsArr);
@@ -515,6 +517,7 @@ const getBreeds = function () {
     console.log("Tier Filtered Breeds Array Lvl 4")
     console.log(tierFilteredBreedsArrLvl4);
 
+    // Purpose filter
     function filterBreedsByPurpose(breedsArr, purpose) {
         if (purpose === "nopref5") {
             return breedsArr; // Return the original array without applying any filters
@@ -631,7 +634,8 @@ const getBreeds = function () {
         },
         )
     }
-    // Usage:
+
+  // Filter base array on Purpose: 
     const purposeFilteredBreedsArr = filterBreedsByPurpose(baseBreedsArr, purpose);
     console.log("Purpose Filtered Breeds Array")
     console.log(purposeFilteredBreedsArr);
@@ -641,9 +645,6 @@ const getBreeds = function () {
     console.log(tierFilteredBreedsArrLvl5)
     console.log(`Final Results: ${JSON.stringify(tierFilteredBreedsArrLvl5)}`)
 };
-
-const userAnswers = JSON.parse(localStorage.getItem('quizResponseHistory'));
-getBreeds(userAnswers);
 
 const createChosenBreedCard = function (breeds) {
     const primaryBreed = tierFilteredBreedsArrLvl5[0];
@@ -669,51 +670,11 @@ const displayChosenBreed = function () {
         return;
     }
 
-    // Display today's weather at the top
     const primaryBreed = tierFilteredBreedsArrLvl5[0]; // Assuming the first item in the forecast array represents today's weather
     const primaryBreedCard = createChosenBreedCard(primaryBreed);
     document.getElementById('chosen-breed').innerHTML = ''; // Clear previous content
     document.getElementById('chosen-breed').appendChild(primaryBreedCard);
 }
-
-
-// const api_key = "live_Hub7CF5mUcP0zp9NtRWJf5gUHyJYswrPmmZUPq8TfUODueobaOpOEzZfeQgOLQLe"
-// let storedBreeds = []
-
-// fetch(apiUrl, {
-//   headers: {
-//     'x-api-key': api_key
-//   }
-// })
-//   .then((response) => {
-//     return response.json();
-//   })
-//   .then((data) => {
-
-//     //filter to only include those with an `image` object
-//     data = data.filter(img => img.image?.apiUrl != null)
-
-//     storedBreeds = data;
-
-//     for (let i = 0; i < storedBreeds.length; i++) {
-//       const breed = storedBreeds[i];
-//       let option = document.createElement('<div>');
-
-//       //skip any breeds that don't have an image
-//       if (!breed.image) continue
-
-//       //use the current array index
-//       option.value = i;
-//       option.innerHTML = `${breed.name}`;
-//       document.getElementById('chosen-breed').appendChild(option);
-
-//     }
-//     //show the first breed by default
-//     showBreedImage(0)
-//   })
-//   .catch(function (error) {
-//     console.log(error);
-//   });
 
 function showBreedImage(index) {
     document.getElementById("breed_image").src = storedBreeds[index].image.apiUrl;
@@ -737,7 +698,6 @@ fetch("https://dogapi.dog/api/v2/facts?limit=2").then(res => res.json())
         document.getElementById("fact1").textContent = data.data[0].attributes.body
         document.getElementById("fact2").textContent = data.data[1].attributes.body
     })
-
 
 // Event listeners to trigger the above functions
 // feelingLuckyBtnEl.addEventListener('click', displayFeelingLucky);
