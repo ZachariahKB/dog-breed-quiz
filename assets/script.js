@@ -14,7 +14,6 @@ const showQuiz = function () {
   document.getElementById('quiz-btn-section').style.display = 'none';
 };
 
-
 const buttonClickHandler = function (event) {
   showQuiz();
 
