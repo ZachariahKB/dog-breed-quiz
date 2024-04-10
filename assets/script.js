@@ -1,6 +1,6 @@
 const url = `https://api.thedogapi.com/v1/breeds`;
-const api_key = "live_Hub7CF5mUcP0zp9NtRWJf5gUHyJYswrPmmZUPq8TfUODueobaOpOEzZfeQgOLQLe"
-let storedBreeds = []
+const api_key = "live_Hub7CF5mUcP0zp9NtRWJf5gUHyJYswrPmmZUPq8TfUODueobaOpOEzZfeQgOLQLe";
+let storedBreeds = [];
 
 fetch(url, {
   headers: {
@@ -11,15 +11,6 @@ fetch(url, {
 .then(data => {
   // Filter to only include breeds with an `image` object
   storedBreeds = data.filter(breed => breed.image?.url != null);
-
-  // Populate the dropdown menu with breed names
-  const breedSelector = document.getElementById('breed_selector');
-  storedBreeds.forEach((breed, index) => {
-    const option = document.createElement('option');
-    option.value = index;
-    option.innerHTML = breed.name;
-    breedSelector.appendChild(option);
-  });
 })
 .catch(error => {
   console.log(error);
