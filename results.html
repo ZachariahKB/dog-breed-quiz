@@ -1,16 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/styles.css">
-    
-    <title>Doggy Dog Quiz Results</title>
+    <link rel="stylesheet" href="./assets/reset.css">
+    <link rel="stylesheet" href="./assets/styles.css">
+
+    <title>The Doggy Dog Breed Quiz</title>
 </head>
+
 <body>
-    
+    <header>
+        <h1>The Doggy Dog Breed Quiz</h1>
+        <h2>Which breed is the right fit for you?</h2>
+    </header>
+    <main>
+        <section id="quiz-btn-section">
+            <button id="take-quiz-btn">Take the Quiz</button>
+        </section>
+        <form id="quiz-section">
+            <section>
+                <h3>Question One: What is your ideal dog size?</h3>
+                <section id="q1">
+                    <input type="radio" name="choice1" value="small">
+                    <label>Small (0-25 lbs)</label>
+                    <input type="radio" name="choice1" value="med">
+                    <label>Medium (26-75 lbs)</label>
+                    <input type="radio" name="choice1" value="large">
+                    <label>Large (76+ lbs)</label>
+                </section>
+            </section>
+            <!-- Add more quiz questions here -->
+            <button id="quiz-submit">See Your Breed</button>
+        </form>
+        <!-- Results Section -->
+        <section id="results-section" style="display: none;">
+            <h2 id="result-heading">Your Recommended Dog Breed</h2>
+            <div id="result-content">
+                <!-- Results will be displayed here -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <section>
+            <h6>Made by Win Pomerantz, Gordon Kwan, and Zachariarh Keiler-Bradshaw</h6>
+            <h6>2024</h6>
+        </section>
+    </footer>
+    <script src="./assets/script.js"></script>
 </body>
-<script src="./assets/results.js"></script>
-<link rel="stylesheet" href="./assets/reset.css">
-<link rel="stylesheet" href="./assets/styles.css">
+
 </html>
