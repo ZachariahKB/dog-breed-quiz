@@ -1,11 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./assets/reset.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/styles.css">
+
+    <title>The Doggy Dog Breed Quiz Results</title>
 </head>
+
 <body>
-    
+    <header>
+        <h1>The Doggy Dog Breed Quiz</h1>
+        <a href="index.html">Take the Quiz Again</a>
+    </header>
+    <main>
+        <div class="flex flex-col items-center">
+            <img id="breed_image" src="" alt="Breed Image" class="max-w-md mb-4">
+            <p id="breed_name" class="text-lg font-bold mb-2"></p>
+        </div>
+        <section id="alt-breeds">
+        </section>
+        <button id="feeling-lucky-btn">Feeling Lucky?</button>
+        <div class="flex flex-col items-center" id="feeling-lucky">
+            <img id="lucky_breed_image"
+                alt="Random Breed Image" class="max-w-md mb-4">
+            <p id="lucky_breed_name" class="text-lg font-bold mb-2"></p>
+        </div>
+        <section>
+            <p id="fact1"></p>
+            <p id="fact2"></p>
+        </section>
+    </main>
+    <footer>
+        <section>
+            <h6>Made by Win Pomerantz, Gordon Kwan, and Zachariarh Keiler-Bradshaw</h6>
+            <h6>2024</h6>
+        </section>
+    </footer>
 </body>
+<script src="./assets/results.js"></script>
+
 </html>
