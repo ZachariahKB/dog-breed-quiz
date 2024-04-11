@@ -2,7 +2,6 @@ const altResultsEl = document.querySelector('#alt-breeds');
 const feelingLuckyBtnEl = document.querySelector('#feeling-lucky-btn');
 const altBreedsRowEl = document.querySelector('#alt-breeds');
 
-
 document.getElementById('feeling-lucky').style.display = 'none';
 
 // Pull the quiz response history from local storage or, if there isn't one, create a new array
@@ -650,14 +649,15 @@ const getBreeds = function () {
     console.log("Tier Filtered Breeds Array Lvl 5")
     console.log(tierFilteredBreedsArrLvl5)
 
+    let chosenBreed;
+
     const displayChosenBreed = function () {
-        let chosenBreed;
         if (tierFilteredBreedsArrLvl5.length > 0) {
             chosenBreed = tierFilteredBreedsArrLvl5[0];
         } else if (tierFilteredBreedsArrLvl4.length > 0) {
-            chosenBreed = tierFilteredBreedsArrLvl3[0];
+            chosenBreed = tierFilteredBreedsArrLvl4[0];
             console.log("Used Tier 4")
-        } else if (tierFilteredBreedsArrLvl4.length > 0) {
+        } else if (tierFilteredBreedsArrLvl3.length > 0) {
             chosenBreed = tierFilteredBreedsArrLvl3[0];
             console.log("Used Tier 3")
         } else {
@@ -674,13 +674,13 @@ const getBreeds = function () {
 
     const defineAltBreeds = function () {
         let altBreed;
-        if (tierFilteredBreedsArrLvl5.length > 3) {
+        if (tierFilteredBreedsArrLvl5.length >= 5) {
             altBreed = tierFilteredBreedsArrLvl5;
-        } else if (tierFilteredBreedsArrLvl4.length > 3) {
+        } else if (tierFilteredBreedsArrLvl4.length >= 5) {
+            altBreed = tierFilteredBreedsArrLvl4;
+        } else if (tierFilteredBreedsArrLvl3.length >= 5) {
             altBreed = tierFilteredBreedsArrLvl3;
-        } else if (tierFilteredBreedsArrLvl4.length > 3) {
-            altBreed = tierFilteredBreedsArrLvl3;
-        } else if (tierFilteredBreedsArrLvl3.length > 3) {
+        } else if (tierFilteredBreedsArrLvl2.length >= 5) {
             altBreed = tierFilteredBreedsArrLvl2;
         }
 
@@ -715,9 +715,15 @@ const getBreeds = function () {
 
         const altBreedRowContainer = document.createElement('div');
         altBreedRowContainer.classList.add('flex');
-        altBreed = defineAltBreeds();
-        let altBreedLoop = altBreed.length >= 5 ? 5 : altBreed.length
-        for (let i = 1; i < altBreedLoop; i++) {
+        altBreed = defineAltBreeds()
+            .filter(breed => {
+                if (breed === chosenBreed)
+                {return}
+                return breed
+            })
+        console.log(altBreed)
+        let altBreedLoop = altBreed.length >= 4 ? 4 : altBreed.length
+        for (let i = 0; i < altBreedLoop; i++) {
             console.log("Alt Breeds");
             console.log(altBreed[i]);
             const altBreedCard = createAltBreedCard(altBreed[i]);
