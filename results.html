@@ -1,14 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/styles.css">
-    
-    <title>Doggy Dog Quiz Results</title>
+    <title>The Doggy Dog Breed Quiz Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="./assets/styles.css"> -->
 </head>
-<body>
-    
+
+<body class="bg-gray-100">
+    <header class="text-center py-8 bg-blue-500 text-white">
+        <h1 class="text-4xl font-bold">The Doggy Dog Breed Quiz</h1>
+    </header>
+    <main class="max-w-lg mx-auto my-8">
+        <p class="text-center text-lg mb-4">This is your new best friend.</p>
+        <div class="flex flex-col items-center">
+            <div class="max-w-md h-100 mb-4 rounded-lg overflow-hidden shadow-md"> <!-- Added height (e.g., h-60) and overflow-hidden -->
+                <img id="breed_image" src="" alt="Breed Image" class="w-full h-full object-cover"> <!-- Added object-cover -->
+            </div>
+            <p id="breed_name" class="text-lg font-bold mb-2"></p>
+        </div>
+        <section id="alt-breeds" class="text-center mb-8">
+            <!-- Alternative breeds will be displayed here -->
+        </section>
+        <button id="feeling-lucky-btn" class="w-full px-6 py-3 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600 transition duration-300">Feeling Lucky?</button>
+
+        <div class="flex flex-col items-center mt-8">
+            <div class="max-w-md h-60 mb-4 rounded-lg overflow-hidden shadow-md"> <!-- Added height (e.g., h-60) and overflow-hidden -->
+                <img id="lucky_breed_image" src="" alt="Random Breed Image" class="w-full h-full object-cover"> <!-- Added object-cover -->
+            </div>
+            <p id="lucky_breed_name" class="text-lg font-bold mb-2"></p>
+        </div>
+        <section class="py-4 text-center">
+            <p id="fact1" class="text-lg">Fact 1: Dogs are awesome!</p>
+            <p id="fact2" class="text-lg">Fact 2: They make great companions.</p>
+        </section>
+        
+    </main>
+    <footer class="py-4 text-center bg-gray-200">
+        
+        <section>
+            <h6>Made with ❤️ by Win, Gordon, and Zachariarh - 2024</h6>
+        </section>
+    </footer>
+    <script src="./assets/results.js"></script>
 </body>
-<script src="./assets/results.js"></script>
+
 </html>
