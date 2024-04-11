@@ -738,10 +738,6 @@ const displayFeelingLucky = function () {
     const randomBreedName = randomBreed.name;
     const randomBreedImgLink = randomBreed.reference_image_id;
 
-    // if (!randomBreed.reference_image_id.response === 200) {
-    //     displayFeelingLucky();
-    // }
-
     fetch(`https://corsproxy.io/?https://cdn2.thedogapi.com/images/${randomBreedImgLink}.jpg`)
         .then(function (response) {
             if (!response.ok) {

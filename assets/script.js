@@ -33,7 +33,6 @@ fetch(apiUrl)
   })
   .then(function (breeds) {
     baseBreedsArr = breeds;
-    // console.log(baseBreedsArr);
   });
 
   // Store User input locally for usage on results page
@@ -53,13 +52,11 @@ const storeUserInput = function () {
   
   responseHistory.unshift(responses);
   localStorage.setItem("quizResponseHistory", JSON.stringify(responseHistory));
-  // console.log(responses);
 }
 
 // Dog Facts
 fetch("https://dogapi.dog/api/v2/facts?limit=2").then(res => res.json())
   .then(data => {
-    // console.log(data)
     document.getElementById("fact1").textContent = data.data[0].attributes.body
     document.getElementById("fact2").textContent = data.data[1].attributes.body
   })
