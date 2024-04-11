@@ -1,4 +1,3 @@
-const primaryResultsEl = document.querySelector('#chosen-breed');
 const altResultsEl = document.querySelector('#alt-breeds');
 const feelingLuckyBtnEl = document.querySelector('#feeling-lucky-btn');
 const altBreedsRowEl = document.querySelector('#alt-breeds');
