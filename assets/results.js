@@ -7,6 +7,7 @@ document.getElementById('feeling-lucky').style.display = 'none';
 
 // Pull the quiz response history from local storage or, if there isn't one, create a new array
 let responses = JSON.parse(localStorage.getItem("quizResponseHistory")) || [];
+console.log("User Responses");
 console.log(responses);
 
 // Fetch data from the API
@@ -22,6 +23,7 @@ fetch(apiUrl)
     })
     .then(function (breeds) {
         baseBreedsArr = breeds;
+        console.log("Base Breed Array");
         console.log(baseBreedsArr);
         getBreeds();
     });
@@ -645,11 +647,8 @@ const getBreeds = function () {
 
     // Tiered filter Lvl 5 - Final
     const tierFilteredBreedsArrLvl5 = filterBreedsByPurpose(tierFilteredBreedsArrLvl4, purpose);
+    console.log("Tier Filtered Breeds Array Lvl 5")
     console.log(tierFilteredBreedsArrLvl5)
-    console.log(`Final Results: ${JSON.stringify(tierFilteredBreedsArrLvl5)}`)
-
-    console.log(tierFilteredBreedsArrLvl3[0].reference_image_id.toLowerCase());
-
 
     const displayChosenBreed = function () {
         let chosenBreed;
@@ -674,31 +673,21 @@ const getBreeds = function () {
 
 
     const defineAltBreeds = function () {
-        console.log(tierFilteredBreedsArrLvl5)
-        console.log(tierFilteredBreedsArrLvl4)
-        console.log(tierFilteredBreedsArrLvl3)
-
         let altBreed;
-        if (tierFilteredBreedsArrLvl5.length > 0) {
+        if (tierFilteredBreedsArrLvl5.length > 3) {
             altBreed = tierFilteredBreedsArrLvl5;
-        } else if (tierFilteredBreedsArrLvl4.length > 0) {
+        } else if (tierFilteredBreedsArrLvl4.length > 3) {
             altBreed = tierFilteredBreedsArrLvl3;
-        } else if (tierFilteredBreedsArrLvl4.length > 0) {
+        } else if (tierFilteredBreedsArrLvl4.length > 3) {
             altBreed = tierFilteredBreedsArrLvl3;
+        } else if (tierFilteredBreedsArrLvl3.length > 3) {
+            altBreed = tierFilteredBreedsArrLvl2;
         }
+
         return altBreed;
     }
 
     const createAltBreedCard = function (altBreed) {
-        // let altBreed;
-        // if (tierFilteredBreedsArrLvl5.length > 0) {
-        //     altBreed = tierFilteredBreedsArrLvl5[i];
-        // } else if (tierFilteredBreedsArrLvl4.length > 0) {
-        //     altBreed = tierFilteredBreedsArrLvl3[i];
-        // } else if (tierFilteredBreedsArrLvl4.length > 0) {
-        //     altBreed = tierFilteredBreedsArrLvl3[i];
-        // }
-
         const altBreedName = altBreed.name;
         const altBreedImgLink = altBreed.reference_image_id;
         const altBreedImg = `https://cdn2.thedogapi.com/images/${altBreedImgLink}.jpg`
@@ -725,10 +714,11 @@ const getBreeds = function () {
     const displayAltBreeds = function (altBreed) {
 
         const altBreedRowContainer = document.createElement('div');
-        altBreedRowContainer.classList.add('alt-breed-row');
+        altBreedRowContainer.classList.add('flex');
         altBreed = defineAltBreeds();
-        console.log(altBreed);
-        for (let i = 1; i < altBreed.length; i++) {
+        let altBreedLoop = altBreed.length >= 5 ? 5 : altBreed.length
+        for (let i = 1; i < altBreedLoop; i++) {
+            console.log("Alt Breeds");
             console.log(altBreed[i]);
             const altBreedCard = createAltBreedCard(altBreed[i]);
             altBreedRowContainer.appendChild(altBreedCard);
@@ -755,7 +745,7 @@ const displayFeelingLucky = function () {
     fetch(`https://corsproxy.io/?https://cdn2.thedogapi.com/images/${randomBreedImgLink}.jpg`)
         .then(function (response) {
             if (!response.ok) {
-              displayFeelingLucky();
+                displayFeelingLucky();
             }
         }
         )
@@ -767,7 +757,6 @@ const displayFeelingLucky = function () {
 // Dog Facts
 fetch("https://dogapi.dog/api/v2/facts?limit=2").then(res => res.json())
     .then(data => {
-        console.log(data)
         document.getElementById("fact1").textContent = data.data[0].attributes.body
         document.getElementById("fact2").textContent = data.data[1].attributes.body
     })
