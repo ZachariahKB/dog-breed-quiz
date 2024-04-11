@@ -4,94 +4,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/reset.css">
-    <link rel="stylesheet" href="./assets/styles.css">
-
     <title>The Doggy Dog Breed Quiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for styled radio buttons */
+        .radio-circle {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #4A90E2;
+            border-radius: 50%;
+            outline: none;
+            transition: 0.2s all ease-in-out;
+            cursor: pointer;
+        }
+
+        .radio-circle:checked {
+            background-color: #4A90E2;
+        }
+
+        .radio-circle:focus {
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.5);
+        }
+    </style>
 </head>
 
-<body>
-    <header>
-        <h1>The Doggy Dog Breed Quiz</h1>
-        <h2>Which breed is the right fit for you?</h2>
+<body class="bg-gray-100">
+    <header class="text-center py-8 bg-blue-500 text-white">
+        <h1 class="text-4xl font-bold">The Doggy Dog Breed Quiz</h1>
+        <h2 class="text-lg">Find the perfect dog breed for you!</h2>
     </header>
-    <main>
-        <section id="quiz-btn-section">
-            <button id="take-quiz-btn">Take the Quiz</button>
+    <main class="max-w-lg mx-auto my-8 px-4">
+        <section id="quiz-btn-section" class="text-center">
+            <button id="take-quiz-btn" class="w-full md:w-auto px-6 py-3 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600 transition duration-300">Start Quiz</button>
         </section>
-        <form id="quiz-section">
-            <section>
-                <h3>Question One: What is your ideal dog size?</h3>
+        <form id="quiz-section" class="mt-8 bg-white p-8 rounded-lg shadow-md">
+            <section class="mb-6">
+                <h3 class="text-lg font-semibold mb-2">Question One: What is your ideal dog size?</h3>
                 <section id="q1">
-                    <input type="radio" name="choice1" value="small">
-                    <label>Small (0-25 lbs)</label>
-                    <input type="radio" name="choice1" value="med">
-                    <label>Medium (26-75 lbs)</label>
-                    <input type="radio" name="choice1" value="large">
-                    <label>Large (76+ lbs)</label>
-                    <input type="radio" name="choice1" value="nopref1">
-                    <label>No Preference</label>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="choice1" value="small" id="size-small" class="radio-circle">
+                        <label for="size-small" class="ml-2">Small (0-25 lbs)</label>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="choice1" value="med" id="size-med" class="radio-circle">
+                        <label for="size-med" class="ml-2">Medium (26-75 lbs)</label>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="choice1" value="large" id="size-large" class="radio-circle">
+                        <label for="size-large" class="ml-2">Large (76+ lbs)</label>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="choice1" value="nopref1" id="size-nopref" class="radio-circle">
+                        <label for="size-nopref" class="ml-2">No Preference</label>
+                    </div>
                 </section>
             </section>
-            <section>
-                <h3>Question Two: Would you prefer your dog be more energetic or calm</h3>
+            <section class="mb-6">
+                <h3 class="text-lg font-semibold mb-2">Question Two: Would you prefer your dog be more energetic or calm?</h3>
                 <section id="q2">
-                    <input type="radio" name="choice2" value="energetic">
-                    <label>Energetic</label>
-                    <input type="radio" name="choice2" value="calm">
-                    <label>Calm</label>
-                    <input type="radio" name="choice2" value="nopref2">
-                    <label>No Preference</label>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="choice2" value="energetic" id="energy-energetic" class="radio-circle">
+                        <label for="energy-energetic" class="ml-2">Energetic</label>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="choice2" value="calm" id="energy-calm" class="radio-circle">
+                        <label for="energy-calm" class="ml-2">Calm</label>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="choice2" value="nopref2" id="energy-nopref" class="radio-circle">
+                        <label for="energy-nopref" class="ml-2">No Preference</label>
+                    </div>
                 </section>
             </section>
-            <section>
-                <h3>Question Three: Would you prefer your dog be more confident or reserved?</h3>
+            <section class="mb-6">
+                <h3 class="text-lg font-semibold mb-2">Question Three: Would you prefer your dog be more confident or reserved?</h3>
                 <section id="q3">
-                    <input type="radio" name="choice3" value="confident">
-                    <label>Confident</label>
-                    <input type="radio" name="choice3" value="reserved">
-                    <label>Reserved</label>
-                    <input type="radio" name="choice3" value="nopref3">
-                    <label>No Preference</label>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="choice3" value="confident" id="personality-confident" class="radio-circle">
+                        <label for="personality-confident" class="ml-2">Confident</label>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="choice3" value="reserved" id="personality-reserved" class="radio-circle">
+                        <label for="personality-reserved" class="ml-2">Reserved</label>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="choice3" value="nopref3" id="personality-nopref" class="radio-circle">
+                        <label for="personality-nopref" class="ml-2">No Preference</label>
+                    </div>
                 </section>
             </section>
-            <section>
-                <h3>Question Four: Would you prefer your dog be more independent or affectionate?</h3>
+            <section class="mb-6">
+                <h3 class="text-lg font-semibold mb-2">Question Four: Would you prefer your dog be more independent or affectionate?</h3>
                 <section id="q4">
-                    <input type="radio" name="choice4" value="independent">
-                    <label>Independent</label>
-                    <input type="radio" name="choice4" value="affectionate">
-                    <label>Affectionate</label>
-                    <input type="radio" name="choice4" value="nopref4">
-                    <label>No Preference</label>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="choice4" value="independent" id="nature-independent" class="radio-circle">
+                        <label for="nature-independent" class="ml-2">Independent</label>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="choice4" value="affectionate" id="nature-affectionate" class="radio-circle">
+                        <label for="nature-affectionate" class="ml-2">Affectionate</label>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="choice4" value="nopref4" id="nature-nopref" class="radio-circle">
+                        <label for="nature-nopref" class="ml-2">No Preference</label>
+                    </div>
                 </section>
             </section>
-            <section>
-                <h3>Question Five: Would you like a dog bred for Hunting, Herding, Guarding, or Companionship?</h3>
+            <section class="mb-6">
+                <h3 class="text-lg font-semibold mb-2">Question Five: Would you like a dog bred for Hunting, Herding, Guarding, or Companionship?</h3>
                 <section id="q5">
-                    <input type="radio" name="choice5" value="hunting">
-                    <label>Hunting</label>
-                    <input type="radio" name="choice5" value="herding">
-                    <label>Herding</label>
-                    <input type="radio" name="choice5" value="guarding">
-                    <label>Guarding</label>
-                    <input type="radio" name="choice5" value="companionship">
-                    <label>Companionship</label>
-                    <input type="radio" name="choice5" value="nopref5">
-                    <label>No Preference</label>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="choice5" value="hunting" id="purpose-hunting" class="radio-circle">
+                        <label for="purpose-hunting" class="ml-2">Hunting</label>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="choice5" value="herding" id="purpose-herding" class="radio-circle">
+                        <label for="purpose-herding" class="ml-2">Herding</label>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="choice5" value="guarding" id="purpose-guarding" class="radio-circle">
+                        <label for="purpose-guarding" class="ml-2">Guarding</label>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="choice5" value="companionship" id="purpose-companionship" class="radio-circle">
+                        <label for="purpose-companionship" class="ml-2">Companionship</label>
+                    </div>
+                    <div class="flex items-center mb-2">
+                        <input type="radio" name="choice5" value="nopref5" id="purpose-nopref" class="radio-circle">
+                        <label for="purpose-nopref" class="ml-2">No Preference</label>
+                    </div>
                 </section>
             </section>
-            <button id="quiz-submit">See Your Breed</button>
+            <!-- <button id="quiz-submit" class="w-full md:w-auto py-3 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600 transition duration-300">See Your Breed</button> -->
+            <button id="quiz-submit" class="w-full py-3 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600 transition duration-300">See Your Breed</button>
+
         </form>
-        <section>
-            <p id="fact1"></p>
-            <p id="fact2"></p>
+        <section class="py-4 text-center">
+            <p id="fact1" class="text-lg">Fact 1: Dogs are awesome!</p>
+            <p id="fact2" class="text-lg">Fact 2: They make great companions.</p>
         </section>
     </main>
-    <footer>
+    <footer class="py-4 text-center bg-gray-200">
+        
         <section>
-            <h6>Made by Win Pomerantz, Gordon Kwan, and Zachariarh Keiler-Bradshaw</h6>
-            <h6>2024</h6>
+            <h6>Made with ❤️ by Win, Gordon, and Zachariarh - 2024</h6>
         </section>
     </footer>
 </body>
