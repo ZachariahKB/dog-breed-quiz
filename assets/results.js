@@ -4,7 +4,7 @@ const feelingLuckyBtnEl = document.querySelector('#feeling-lucky-btn');
 const altBreedsRowEl = document.querySelector('#alt-breeds');
 
 
-// document.getElementById('feeling-lucky').style.display = 'none';
+document.getElementById('feeling-lucky').style.display = 'none';
 
 // Pull the quiz response history from local storage or, if there isn't one, create a new array
 let responses = JSON.parse(localStorage.getItem("quizResponseHistory")) || [];
@@ -690,10 +690,6 @@ const getBreeds = function () {
         return altBreed;
     }
 
-
-    console.log(defineAltBreeds());
-
-
     const createAltBreedCard = function (altBreed) {
         // let altBreed;
         // if (tierFilteredBreedsArrLvl5.length > 0) {
@@ -748,19 +744,19 @@ const getBreeds = function () {
 };
 
 const displayFeelingLucky = function () {
-    // document.getElementById('feeling-lucky').style.display = 'block';
+    document.getElementById('feeling-lucky').style.display = 'block';
     const randomBreed = baseBreedsArr[Math.floor(Math.random() * baseBreedsArr.length)];
     const randomBreedName = randomBreed.name;
     const randomBreedImgLink = randomBreed.reference_image_id;
 
-    fetch(`https://cdn2.thedogapi.com/images/${randomBreedImgLink}.jpg`)
+    // if (!randomBreed.reference_image_id.response === 200) {
+    //     displayFeelingLucky();
+    // }
+
+    fetch(`https://corsproxy.io/?https://cdn2.thedogapi.com/images/${randomBreedImgLink}.jpg`)
         .then(function (response) {
-            if (response.status === 403) {
-                console.log(response) 
-                displayFeelingLucky();
-            }
-            else {
-                return
+            if (!response.ok) {
+              displayFeelingLucky();
             }
         }
         )
