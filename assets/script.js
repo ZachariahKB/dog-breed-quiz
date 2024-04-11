@@ -51,7 +51,7 @@ const storeUserInput = function () {
     responseHistory = [];
   }
   
-  responseHistory.push(responses);
+  responseHistory.unshift(responses);
   localStorage.setItem("quizResponseHistory", JSON.stringify(responseHistory));
   // console.log(responses);
 }

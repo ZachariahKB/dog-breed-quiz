@@ -1,6 +1,8 @@
 const primaryResultsEl = document.querySelector('#chosen-breed');
 const altResultsEl = document.querySelector('#alt-breeds');
 const feelingLuckyBtnEl = document.querySelector('#feeling-lucky-btn');
+const altBreedsRowEl = document.querySelector('#alt-breeds');
+
 
 // document.getElementById('feeling-lucky').style.display = 'none';
 
@@ -670,17 +672,37 @@ const getBreeds = function () {
         document.getElementById("breed_image").src = `https://cdn2.thedogapi.com/images/${chosenBreedImgLink}.jpg`
         document.getElementById("breed_name").textContent = chosenBreedName;
     }
-    displayChosenBreed();
 
-    const altBreedCard = function () {
+
+    const defineAltBreeds = function () {
+        console.log(tierFilteredBreedsArrLvl5)
+        console.log(tierFilteredBreedsArrLvl4)
+        console.log(tierFilteredBreedsArrLvl3)
+
         let altBreed;
         if (tierFilteredBreedsArrLvl5.length > 0) {
-            altBreed = tierFilteredBreedsArrLvl5[i];
+            altBreed = tierFilteredBreedsArrLvl5;
         } else if (tierFilteredBreedsArrLvl4.length > 0) {
-            altBreed = tierFilteredBreedsArrLvl3[i];
+            altBreed = tierFilteredBreedsArrLvl3;
         } else if (tierFilteredBreedsArrLvl4.length > 0) {
-            altBreed = tierFilteredBreedsArrLvl3[i];
+            altBreed = tierFilteredBreedsArrLvl3;
         }
+        return altBreed;
+    }
+
+
+    console.log(defineAltBreeds());
+
+
+    const createAltBreedCard = function (altBreed) {
+        // let altBreed;
+        // if (tierFilteredBreedsArrLvl5.length > 0) {
+        //     altBreed = tierFilteredBreedsArrLvl5[i];
+        // } else if (tierFilteredBreedsArrLvl4.length > 0) {
+        //     altBreed = tierFilteredBreedsArrLvl3[i];
+        // } else if (tierFilteredBreedsArrLvl4.length > 0) {
+        //     altBreed = tierFilteredBreedsArrLvl3[i];
+        // }
 
         const altBreedName = altBreed.name;
         const altBreedImgLink = altBreed.reference_image_id;
@@ -694,31 +716,35 @@ const getBreeds = function () {
         altBreedHeader.textContent = altBreedName;
 
         const altBreedCardBody = document.createElement('div');
-        altBreedCardBody.classList.add("card-body");
+        // altBreedCardBody.classList.add("card-body");
 
         const altBreedCardImg = document.createElement('img');
-        altBreedCardImg.setAttribute("breed-img");
-        altBreedCardImg.textContent = altBreedImg
+        altBreedCardImg.setAttribute("src", altBreedImg);
 
         altBreedCardBody.append(altBreedCardImg);
-        altBreedCard.append(altBreedHeader, altBreedCard);
+        altBreedCard.append(altBreedHeader, altBreedCardBody);
 
         return altBreedCard;
     };
 
-    const displayAltBreeds = function () {
+    const displayAltBreeds = function (altBreed) {
 
         const altBreedRowContainer = document.createElement('div');
         altBreedRowContainer.classList.add('alt-breed-row');
-
-        for (let i = 1; i < 6; i++) {
-            const forecastCard = createForecastCard(forecast[i]);
-            forecastRowContainer.appendChild(forecastCard);
+        altBreed = defineAltBreeds();
+        console.log(altBreed);
+        for (let i = 1; i < altBreed.length; i++) {
+            console.log(altBreed[i]);
+            const altBreedCard = createAltBreedCard(altBreed[i]);
+            altBreedRowContainer.appendChild(altBreedCard);
         }
-    
-        forecastContainerEl.innerHTML = ''; // Clear previous content
-        forecastContainerEl.appendChild(forecastRowContainer);
+
+        altBreedsRowEl.innerHTML = ''; // Clear previous content
+        altBreedsRowEl.appendChild(altBreedRowContainer);
     };
+
+    displayChosenBreed();
+    displayAltBreeds();
 };
 
 const displayFeelingLucky = function () {
@@ -727,8 +753,20 @@ const displayFeelingLucky = function () {
     const randomBreedName = randomBreed.name;
     const randomBreedImgLink = randomBreed.reference_image_id;
 
-    document.getElementById("lucky_breed_image").src = `https://cdn2.thedogapi.com/images/${randomBreedImgLink}.jpg`
-    document.getElementById("lucky_breed_name").textContent = randomBreedName
+    fetch(`https://cdn2.thedogapi.com/images/${randomBreedImgLink}.jpg`)
+        .then(function (response) {
+            if (response.status === 403) {
+                console.log(response) 
+                displayFeelingLucky();
+            }
+            else {
+                return
+            }
+        }
+        )
+
+    document.getElementById("lucky_breed_image").src = `https://cdn2.thedogapi.com/images/${randomBreedImgLink}.jpg`;
+    document.getElementById("lucky_breed_name").textContent = randomBreedName;
 };
 
 // Dog Facts
