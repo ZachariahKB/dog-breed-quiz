@@ -2,6 +2,8 @@ const primaryResultsEl = document.querySelector('#chosen-breed');
 const altResultsEl = document.querySelector('#alt-breeds');
 const feelingLuckyBtnEl = document.querySelector('#feeling-lucky-btn');
 
+// document.getElementById('feeling-lucky').style.display = 'none';
+
 // Pull the quiz response history from local storage or, if there isn't one, create a new array
 let responses = JSON.parse(localStorage.getItem("quizResponseHistory")) || [];
 console.log(responses);
@@ -645,83 +647,88 @@ const getBreeds = function () {
     console.log(tierFilteredBreedsArrLvl5)
     console.log(`Final Results: ${JSON.stringify(tierFilteredBreedsArrLvl5)}`)
 
-    console.log(tierFilteredBreedsArrLvl3[0].name.toLowerCase());
+    console.log(tierFilteredBreedsArrLvl3[0].reference_image_id.toLowerCase());
+
 
     const displayChosenBreed = function () {
-        // const api_key = "live_Hub7CF5mUcP0zp9NtRWJf5gUHyJYswrPmmZUPq8TfUODueobaOpOEzZfeQgOLQLe";
-        const storedBreeds = baseBreedsArr.filter(function (breed) {
-            return baseBreedsArr.includes(breed.reference_image_id);
-        });
-        console.log(storedBreeds);
-
-        // const sizeFilteredBreedsArr = baseBreedsArr.filter(function (breed) {
-        //     // if (size === "nopref1") {
-        //     //     return true;
-        //     // }
-    
-        //     return traitMapping.question1[size].includes(breed.weight.imperial);
-        //     const size = firstResponse.size;
-
-        // storedBreeds = baseBreedsArr.filter(breed => breed.reference_image_id ?.apiUrl != null);
-    };
-
-    // Function to show breed image and temperament by breed name
-    function showBreedByName() {
-        const breed = tierFilteredBreedsArrLvl5[0].breed.name.toLowerCase();
-        // storedBreeds.find(breed => breed.name.toLowerCase() === breedName.toLowerCase());
-        if (breed) {
-            document.getElementById("breed_image").src = breed.image.url;
-            document.getElementById("breed_json").textContent = breed.temperament;
-            document.getElementById("breed_name").textContent = breed.name;
+        let chosenBreed;
+        if (tierFilteredBreedsArrLvl5.length > 0) {
+            chosenBreed = tierFilteredBreedsArrLvl5[0];
+        } else if (tierFilteredBreedsArrLvl4.length > 0) {
+            chosenBreed = tierFilteredBreedsArrLvl3[0];
+            console.log("Used Tier 4")
+        } else if (tierFilteredBreedsArrLvl4.length > 0) {
+            chosenBreed = tierFilteredBreedsArrLvl3[0];
+            console.log("Used Tier 3")
         } else {
-            alert("Breed not found!");
+            // Handle the case where arrays are empty
+            console.log("The filters have removed all options!");
         }
+        const chosenBreedName = chosenBreed.name;
+        const chosenBreedImgLink = chosenBreed.reference_image_id;
+
+        document.getElementById("breed_image").src = `https://cdn2.thedogapi.com/images/${chosenBreedImgLink}.jpg`
+        document.getElementById("breed_name").textContent = chosenBreedName;
     }
     displayChosenBreed();
-    showBreedByName();
 
-    const createChosenBreedCard = function (breeds) {
-        const primaryBreed = tierFilteredBreedsArrLvl5[0];
-        const primaryBreedImageUrl =`https://cdn2.thedogapi.com/images/${reference_image_id}.jpg`;
+    const altBreedCard = function () {
+        let altBreed;
+        if (tierFilteredBreedsArrLvl5.length > 0) {
+            altBreed = tierFilteredBreedsArrLvl5[i];
+        } else if (tierFilteredBreedsArrLvl4.length > 0) {
+            altBreed = tierFilteredBreedsArrLvl3[i];
+        } else if (tierFilteredBreedsArrLvl4.length > 0) {
+            altBreed = tierFilteredBreedsArrLvl3[i];
+        }
 
-        const primaryBreedCard = document.createElement('div');
-        primaryBreedCard.classList.add('card', 'primary-breed-card');
+        const altBreedName = altBreed.name;
+        const altBreedImgLink = altBreed.reference_image_id;
+        const altBreedImg = `https://cdn2.thedogapi.com/images/${altBreedImgLink}.jpg`
 
-        const primaryBreedName = docuement.createElement('h2');
-        primaryBreedName.textContent = `Your new best friend is a ${primaryBreed.name}`
+        const altBreedCard = document.createElement('div');
+        altBreedCard.classList.add("card", "alt-breed-card");
 
-        const primaryBreedImage = document.createElement('img');
-        primaryBreedImage.setAttribute("src", primaryBreedImageUrl);
-        primaryBreedImage.textContent = `${primaryBreedImageUrl}`;
+        const altBreedHeader = document.createElement('div');
+        altBreedHeader.classList.add("card-header", "h4");
+        altBreedHeader.textContent = altBreedName;
 
-        primaryBreedCard.append(primaryBreedName, primaryBreedImage)
+        const altBreedCardBody = document.createElement('div');
+        altBreedCardBody.classList.add("card-body");
 
-        return primaryBreedCard;
+        const altBreedCardImg = document.createElement('img');
+        altBreedCardImg.setAttribute("breed-img");
+        altBreedCardImg.textContent = altBreedImg
+
+        altBreedCardBody.append(altBreedCardImg);
+        altBreedCard.append(altBreedHeader, altBreedCard);
+
+        return altBreedCard;
     };
 
-    // if (tierFilteredBreedsArrLvl5.length === 0) {
-    //     return;
-    // }
+    const displayAltBreeds = function () {
 
-    // const primaryBreed = tierFilteredBreedsArrLvl5[0]; // Assuming the first item in the forecast array represents today's weather
-    // const primaryBreedCard = createChosenBreedCard(primaryBreed);
-    // document.getElementById('chosen-breed').innerHTML = ''; // Clear previous content
-    // document.getElementById('chosen-breed').appendChild(primaryBreedCard);
-}
+        const altBreedRowContainer = document.createElement('div');
+        altBreedRowContainer.classList.add('alt-breed-row');
 
-function showBreedImage(index) {
-    document.getElementById("breed_image").src = storedBreeds[index].image.apiUrl;
-    document.getElementById("breed_json").textContent = storedBreeds[index].temperament
-    // document.getElementById("wiki_link").href = storedBreeds[index].wikipedia_url
-    // document.getElementById("wiki_link").innerHTML = storedBreeds[index].wikipedia_url
-};
-
-const displayAltBreeds = function () {
-
+        for (let i = 1; i < 6; i++) {
+            const forecastCard = createForecastCard(forecast[i]);
+            forecastRowContainer.appendChild(forecastCard);
+        }
+    
+        forecastContainerEl.innerHTML = ''; // Clear previous content
+        forecastContainerEl.appendChild(forecastRowContainer);
+    };
 };
 
 const displayFeelingLucky = function () {
+    // document.getElementById('feeling-lucky').style.display = 'block';
+    const randomBreed = baseBreedsArr[Math.floor(Math.random() * baseBreedsArr.length)];
+    const randomBreedName = randomBreed.name;
+    const randomBreedImgLink = randomBreed.reference_image_id;
 
+    document.getElementById("lucky_breed_image").src = `https://cdn2.thedogapi.com/images/${randomBreedImgLink}.jpg`
+    document.getElementById("lucky_breed_name").textContent = randomBreedName
 };
 
 // Dog Facts
@@ -733,4 +740,4 @@ fetch("https://dogapi.dog/api/v2/facts?limit=2").then(res => res.json())
     })
 
 // Event listeners to trigger the above functions
-// feelingLuckyBtnEl.addEventListener('click', displayFeelingLucky);
+feelingLuckyBtnEl.addEventListener('click', displayFeelingLucky);
