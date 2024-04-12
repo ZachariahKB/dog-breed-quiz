@@ -8,7 +8,7 @@ let responseHistory = JSON.parse(localStorage.getItem("quizResponseHistory")) ||
 document.getElementById('quiz-section').style.display = 'none';
 
 // Show the quiz and hide the take quiz button
-const showQuiz = function (event) {
+const showQuiz = function () {
   document.getElementById('quiz-section').style.display = 'block';
   document.getElementById('quiz-btn-section').style.display = 'none';
 };
@@ -16,14 +16,18 @@ const showQuiz = function (event) {
 // When quiz is submitted, user answers are stored locally to be references on results.html
 const quizSubmitHandler = function (event) {
   event.preventDefault();
+  event.stopPropagation();
 
   if (!allQuestionsAnswered()) {
     // If not all questions are answered, render the modal
-    renderModal();
-    return; // Exit the function to prevent further execution
+        modal.style.display = "block";
+    console.log(allQuestionsAnswered())
+    return;
+  } else {
+    console.log(allQuestionsAnswered())
+    storeUserInput()
+    window.location.href = 'results.html'
   }
-  storeUserInput();
-  window.location.href = 'results.html'
 };
 
 // Function to check if all questions are answered
@@ -81,24 +85,17 @@ var modal = document.getElementById("myModal");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal
-const renderModal = function () {
-  document.getElementById("quiz-submit").onclick = function () {
-    modal.style.display = "block";
-  };
-}
-
 // When the user clicks on <span> (x), close the modal
-span.onclick = function () {
+span.addEventListener("click", function () {
   modal.style.display = "none";
-};
+});
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
+window.addEventListener("click", function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-};
+});
 
 // Dog Facts
 fetch("https://dogapi.dog/api/v2/facts?limit=2").then(res => res.json())

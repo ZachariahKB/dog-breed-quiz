@@ -23,6 +23,12 @@ button {
     margin: auto;
 }
 
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
 .modal {
     display: none;
     position: fixed;
@@ -116,6 +122,8 @@ button {
     padding-bottom: 10px;
     margin-left: 2vw;
     font-weight: bold;
+    text-align: center;
+    font-size: 1.1rem;
 }
 
 .alt-breeds {

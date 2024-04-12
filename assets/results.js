@@ -693,14 +693,14 @@ const getBreeds = function () {
         const altBreedImgLink = altBreed.reference_image_id;
         const altBreedImg = `https://cdn2.thedogapi.com/images/${altBreedImgLink}.jpg`
 
-        const altBreedCard = document.createElement('section');
+        const altBreedCard = document.createElement('div');
         altBreedCard.classList.add("alt-breed-card", "m-10");
 
         const altBreedHeader = document.createElement('h3');
         altBreedHeader.classList.add("card-header", "h3");
         altBreedHeader.textContent = altBreedName;
 
-        const altBreedCardBody = document.createElement('section');
+        const altBreedCardBody = document.createElement('div');
         altBreedCardBody.classList.add("card-body");
         altBreedCardBody.textContent = altBreed.temperament;
 
