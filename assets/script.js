@@ -16,6 +16,7 @@ const showQuiz = function (event) {
 // When quiz is submitted, user answers are stored locally to be references on results.html
 const quizSubmitHandler = function (event) {
   event.preventDefault();
+  renderModal();
   storeUserInput();
   window.location.href = 'results.html'
 };
@@ -35,7 +36,7 @@ fetch(apiUrl)
     baseBreedsArr = breeds;
   });
 
-  // Store User input locally for usage on results page
+// Store User input locally for usage on results page
 const storeUserInput = function () {
   const responses = {
     size: document.querySelector('input[name="choice1"]:checked').value,
@@ -49,10 +50,45 @@ const storeUserInput = function () {
   if (!Array.isArray(responseHistory)) {
     responseHistory = [];
   }
-  
+
   responseHistory.unshift(responses);
   localStorage.setItem("quizResponseHistory", JSON.stringify(responseHistory));
 }
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+const renderModal = function () {
+  document.getElementById("quiz-submit").onclick = function () {
+    // Check if any of the radio buttons are checked for each question
+    if (!document.querySelector('input[name="choice1"]:checked') ||
+        !document.querySelector('input[name="choice2"]:checked') ||
+        !document.querySelector('input[name="choice3"]:checked') ||
+        !document.querySelector('input[name="choice4"]:checked') ||
+        !document.querySelector('input[name="choice5"]:checked')) {
+      // If any question is unanswered, display the modal
+      modal.style.display = "block";
+    }
+  };
+};
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+
 
 // Dog Facts
 fetch("https://dogapi.dog/api/v2/facts?limit=2").then(res => res.json())

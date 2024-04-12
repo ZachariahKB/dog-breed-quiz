@@ -16,7 +16,9 @@
     </header>
     <main class="max-w-lg mx-auto my-8 px-4">
         <section id="quiz-btn-section" class="text-center mt-3">
-            <button id="take-quiz-btn" class="w-full md:w-auto px-6 py-3 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600 transition duration-300">Start Quiz</button>
+            <button id="take-quiz-btn"
+                class="w-full md:w-auto px-6 py-3 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600 transition duration-300">Start
+                Quiz</button>
         </section>
         <form id="quiz-section" class="mt-8 bg-white p-8 rounded-lg shadow-md">
             <section class="mb-6">
@@ -41,7 +43,8 @@
                 </section>
             </section>
             <section class="mb-6">
-                <h3 class="text-lg font-semibold mb-2">Question Two: Would you prefer your dog be more energetic or calm?</h3>
+                <h3 class="text-lg font-semibold mb-2">Question Two: Would you prefer your dog be more energetic or
+                    calm?</h3>
                 <section id="q2">
                     <div class="flex items-center mb-2">
                         <input type="radio" name="choice2" value="energetic" id="energy-energetic" class="radio-circle">
@@ -58,14 +61,17 @@
                 </section>
             </section>
             <section class="mb-6">
-                <h3 class="text-lg font-semibold mb-2">Question Three: Would you prefer your dog be more confident or reserved?</h3>
+                <h3 class="text-lg font-semibold mb-2">Question Three: Would you prefer your dog be more confident or
+                    reserved?</h3>
                 <section id="q3">
                     <div class="flex items-center mb-2">
-                        <input type="radio" name="choice3" value="confident" id="personality-confident" class="radio-circle">
+                        <input type="radio" name="choice3" value="confident" id="personality-confident"
+                            class="radio-circle">
                         <label for="personality-confident" class="ml-2">Confident</label>
                     </div>
                     <div class="flex items-center mb-2">
-                        <input type="radio" name="choice3" value="reserved" id="personality-reserved" class="radio-circle">
+                        <input type="radio" name="choice3" value="reserved" id="personality-reserved"
+                            class="radio-circle">
                         <label for="personality-reserved" class="ml-2">Reserved</label>
                     </div>
                     <div class="flex items-center mb-2">
@@ -75,14 +81,17 @@
                 </section>
             </section>
             <section class="mb-6">
-                <h3 class="text-lg font-semibold mb-2">Question Four: Would you prefer your dog be more independent or affectionate?</h3>
+                <h3 class="text-lg font-semibold mb-2">Question Four: Would you prefer your dog be more independent or
+                    affectionate?</h3>
                 <section id="q4">
                     <div class="flex items-center mb-2">
-                        <input type="radio" name="choice4" value="independent" id="nature-independent" class="radio-circle">
+                        <input type="radio" name="choice4" value="independent" id="nature-independent"
+                            class="radio-circle">
                         <label for="nature-independent" class="ml-2">Independent</label>
                     </div>
                     <div class="flex items-center mb-2">
-                        <input type="radio" name="choice4" value="affectionate" id="nature-affectionate" class="radio-circle">
+                        <input type="radio" name="choice4" value="affectionate" id="nature-affectionate"
+                            class="radio-circle">
                         <label for="nature-affectionate" class="ml-2">Affectionate</label>
                     </div>
                     <div class="flex items-center mb-2">
@@ -92,7 +101,8 @@
                 </section>
             </section>
             <section class="mb-6">
-                <h3 class="text-lg font-semibold mb-2">Question Five: Would you like a dog bred for Hunting, Herding, Guarding, or Companionship?</h3>
+                <h3 class="text-lg font-semibold mb-2">Question Five: Would you like a dog bred for Hunting, Herding,
+                    Guarding, or Companionship?</h3>
                 <section id="q5">
                     <div class="flex items-center mb-2">
                         <input type="radio" name="choice5" value="hunting" id="purpose-hunting" class="radio-circle">
@@ -107,7 +117,8 @@
                         <label for="purpose-guarding" class="ml-2">Guarding</label>
                     </div>
                     <div class="flex items-center mb-2">
-                        <input type="radio" name="choice5" value="companionship" id="purpose-companionship" class="radio-circle">
+                        <input type="radio" name="choice5" value="companionship" id="purpose-companionship"
+                            class="radio-circle">
                         <label for="purpose-companionship" class="ml-2">Companionship</label>
                     </div>
                     <div class="flex items-center mb-2">
@@ -116,9 +127,17 @@
                     </div>
                 </section>
             </section>
-            <button id="quiz-submit" class="w-full py-3 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600 transition duration-300">See Your Breed</button>
+            <button id="quiz-submit"
+                class="w-full py-3 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600 transition duration-300">See
+                Your Breed</button>
 
-        </form>      
+        </form>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>To find your best match, please fill out all questions.</p>
+            </div>
+        </div>
     </main>
     <section class="py-4 text-center">
         <p class="facts">Dog Fun Facts</p>
@@ -126,7 +145,7 @@
         <p id="fact2" class="text-lg m-3">Fact 2: They make great companions.</p>
     </section>
     <footer class="py-4 text-center bg-gray-200">
-        
+
         <section>
             <h6>Made with ❤️ by Win, Gordon, and Zachariah <br> 2024</h6>
         </section>
