@@ -16,9 +16,29 @@ const showQuiz = function (event) {
 // When quiz is submitted, user answers are stored locally to be references on results.html
 const quizSubmitHandler = function (event) {
   event.preventDefault();
-  renderModal();
+
+  if (!allQuestionsAnswered()) {
+    // If not all questions are answered, render the modal
+    renderModal();
+    return; // Exit the function to prevent further execution
+  }
   storeUserInput();
   window.location.href = 'results.html'
+};
+
+// Function to check if all questions are answered
+const allQuestionsAnswered = function () {
+  // Loop through each question and check if it has a selected answer
+  if (!document.querySelector('input[name="choice1"]:checked') ||
+    !document.querySelector('input[name="choice2"]:checked') ||
+    !document.querySelector('input[name="choice3"]:checked') ||
+    !document.querySelector('input[name="choice4"]:checked') ||
+    !document.querySelector('input[name="choice5"]:checked')) {
+    {
+      return false; // If any question does not have an answer, return false
+    }
+  }
+  return true; // Return true if all questions have answers
 };
 
 // Fetch data from the API
@@ -64,18 +84,9 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks the button, open the modal
 const renderModal = function () {
   document.getElementById("quiz-submit").onclick = function () {
-    // Check if any of the radio buttons are checked for each question
-    if (!document.querySelector('input[name="choice1"]:checked') ||
-        !document.querySelector('input[name="choice2"]:checked') ||
-        !document.querySelector('input[name="choice3"]:checked') ||
-        !document.querySelector('input[name="choice4"]:checked') ||
-        !document.querySelector('input[name="choice5"]:checked')) {
-      // If any question is unanswered, display the modal
-      modal.style.display = "block";
-    }
+    modal.style.display = "block";
   };
-};
-
+}
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
@@ -88,7 +99,6 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
-
 
 // Dog Facts
 fetch("https://dogapi.dog/api/v2/facts?limit=2").then(res => res.json())

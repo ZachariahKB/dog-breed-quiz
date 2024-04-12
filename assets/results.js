@@ -693,14 +693,14 @@ const getBreeds = function () {
         const altBreedImgLink = altBreed.reference_image_id;
         const altBreedImg = `https://cdn2.thedogapi.com/images/${altBreedImgLink}.jpg`
 
-        const altBreedCard = document.createElement('div');
+        const altBreedCard = document.createElement('section');
         altBreedCard.classList.add("alt-breed-card", "m-10");
 
         const altBreedHeader = document.createElement('h3');
         altBreedHeader.classList.add("card-header", "h3");
         altBreedHeader.textContent = altBreedName;
 
-        const altBreedCardBody = document.createElement('div');
+        const altBreedCardBody = document.createElement('section');
         altBreedCardBody.classList.add("card-body");
         altBreedCardBody.textContent = altBreed.temperament;
 
@@ -716,7 +716,7 @@ const getBreeds = function () {
 
     const displayAltBreeds = function (altBreed) {
 
-        const altBreedRowContainer = document.createElement('div');
+        const altBreedRowContainer = document.createElement('section');
         altBreedRowContainer.classList.add('flex', 'flex-wrap', 'justify-center');
         altBreed = defineAltBreeds()
             .filter(breed => {
