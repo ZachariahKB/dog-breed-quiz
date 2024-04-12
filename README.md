@@ -7,9 +7,9 @@ Live Site URL: https://zachariahkb.github.io/dog-breed-quiz/
 ## Features
 
 - Multiple-choice questions about various dog breeds.
-- Interactive and user-friendly interface.
-- Ability to track your score and see how well you know your dog breeds.
-- Randomized questions to keep the quiz engaging each time you play.
+- Interesting breed suggestions based on your choices.
+- Also offer other suggestions back-up breed suggestions.
+- There's a Feeling Lucky button, in case you just want to see a random breed!
 
 ## Technologies Used
 
@@ -22,28 +22,27 @@ This app is built using the following technologies:
 
 ## How to Play
 
-1. Clone this repository to your local machine.
-2. Open the `index.html` file in your web browser.
-3. Start the quiz by clicking on the "Start Quiz" button.
-4. Read each question carefully and select the answer you think is correct.
-5. Once you've answered all the questions, click the "Submit" button to see your score.
-6. Share your score with friends and see who knows the most about dog breeds!
+1. Visit the website at: https://zachariahkb.github.io/dog-breed-quiz/ 
+2. Start the quiz by clicking on the "Start Quiz" button.
+3. Read each question carefully and select the answer you prefer.
+4. Once you've answered all the questions, click the "Submit" button to see your suggestion breed.
 
 ## Screenshots
 
-![Screenshot 1](/screenshots/screenshot1.png)
-*Add screenshots of your app in action here.*
+![Welcome Screen](./assets/welcome-screen.png)
+![Quiz](./assets/quiz-opened.png)
+![Main Suggestion](./assets/main-suggestion.png)
+![Alternate Suggestions](./assets/other-suggestion.png)
+![Feeling Lucky](./assets/lucky-suggestion.png)
 
 ## Contributing
 
 Contributions are welcome! If you have any suggestions for new features, bug fixes, or improvements, feel free to open an issue or submit a pull request.
 
-Special thanks to the following contributors for their contributions to this project:
+Made By
 - [Win Pomerantz](https://github.com/winpom)
 - [Gordon Kwan](https://github.com/pandord24)
-- [ZachariahKB](https://github.com/ZachariahKB)
-
-Your efforts are greatly appreciated!
+- [Zachariah Keiler-Bradshaw](https://github.com/ZachariahKB)
 
 ## APIs Used
 
@@ -58,5 +57,4 @@ This project is licensed under the MIT License - see the [LICENSE](/LICENSE) fil
 
 ## Acknowledgements
 
-- Special thanks to [DogAPI](https://dog.ceo/dog-api/) for providing the data and images used in this quiz.
-- This project was inspired by my love for dogs and passion for learning about different breeds.
+- This project was inspired by our love for pets and passion for learning about coding.
