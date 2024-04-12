@@ -6,8 +6,8 @@ document.getElementById('feeling-lucky').style.display = 'none';
 
 // Pull the quiz response history from local storage or, if there isn't one, create a new array
 let responses = JSON.parse(localStorage.getItem("quizResponseHistory")) || [];
-console.log("User Responses");
-console.log(responses);
+// console.log("User Responses");
+// console.log(responses);
 
 // Fetch data from the API
 const apiUrl = "https://api.thedogapi.com/v1/breeds";
@@ -22,8 +22,8 @@ fetch(apiUrl)
     })
     .then(function (breeds) {
         baseBreedsArr = breeds;
-        console.log("Base Breed Array");
-        console.log(baseBreedsArr);
+        // console.log("Base Breed Array");
+        // console.log(baseBreedsArr);
         getBreeds();
     });
 
@@ -368,8 +368,8 @@ const getBreeds = function () {
 
         return traitMapping.question1[size].includes(breed.weight.imperial);
     });
-    console.log("Size Filtered Breeds Array")
-    console.log(sizeFilteredBreedsArr);
+    // console.log("Size Filtered Breeds Array")
+    // console.log(sizeFilteredBreedsArr);
 
     // Energy Filter
     function filterBreedsByTemperament(breedsArr, energy) {
@@ -414,13 +414,13 @@ const getBreeds = function () {
 
     // Filter base array on Energy:
     const energyFilteredBreedsArr = filterBreedsByTemperament(baseBreedsArr, energy);
-    console.log("Energy Filtered Breeds Array")
-    console.log(energyFilteredBreedsArr);
+    // console.log("Energy Filtered Breeds Array")
+    // console.log(energyFilteredBreedsArr);
 
     // Tiered filter Lvl 2
     const tierFilteredBreedsArrLvl2 = filterBreedsByTemperament(sizeFilteredBreedsArr, energy);
-    console.log("Tier Filtered Breeds Array Lvl 2")
-    console.log(tierFilteredBreedsArrLvl2);
+    // console.log("Tier Filtered Breeds Array Lvl 2")
+    // console.log(tierFilteredBreedsArrLvl2);
 
     // Confidence Filter
     function filterBreedsByConfidence(breedsArr, confidence) {
@@ -462,13 +462,13 @@ const getBreeds = function () {
 
     // Filter base array on Confidence: 
     const confidenceFilteredBreedsArr = filterBreedsByConfidence(baseBreedsArr, confidence);
-    console.log("Confidence Filtered Breeds Array")
-    console.log(confidenceFilteredBreedsArr);
+    // console.log("Confidence Filtered Breeds Array")
+    // console.log(confidenceFilteredBreedsArr);
 
     // Tiered filter Lvl 3
     const tierFilteredBreedsArrLvl3 = filterBreedsByConfidence(tierFilteredBreedsArrLvl2, confidence);
-    console.log("Tier Filtered Breeds Array Lvl 3")
-    console.log(tierFilteredBreedsArrLvl3);
+    // console.log("Tier Filtered Breeds Array Lvl 3")
+    // console.log(tierFilteredBreedsArrLvl3);
 
     // Affection Filter
     function filterBreedsByAffection(breedsArr, affection) {
@@ -513,13 +513,13 @@ const getBreeds = function () {
 
     // Filter base array on Affection: 
     const affectionFilteredBreedsArr = filterBreedsByAffection(baseBreedsArr, affection);
-    console.log("Affection Filtered Breeds Array")
-    console.log(affectionFilteredBreedsArr);
+    // console.log("Affection Filtered Breeds Array")
+    // console.log(affectionFilteredBreedsArr);
 
     // Tiered filter Lvl 4
     const tierFilteredBreedsArrLvl4 = filterBreedsByAffection(tierFilteredBreedsArrLvl3, affection);
-    console.log("Tier Filtered Breeds Array Lvl 4")
-    console.log(tierFilteredBreedsArrLvl4);
+    // console.log("Tier Filtered Breeds Array Lvl 4")
+    // console.log(tierFilteredBreedsArrLvl4);
 
     // Purpose filter
     function filterBreedsByPurpose(breedsArr, purpose) {
@@ -641,13 +641,13 @@ const getBreeds = function () {
 
     // Filter base array on Purpose: 
     const purposeFilteredBreedsArr = filterBreedsByPurpose(baseBreedsArr, purpose);
-    console.log("Purpose Filtered Breeds Array");
-    console.log(purposeFilteredBreedsArr);
+    // console.log("Purpose Filtered Breeds Array");
+    // console.log(purposeFilteredBreedsArr);
 
     // Tiered filter Lvl 5 - Final
     const tierFilteredBreedsArrLvl5 = filterBreedsByPurpose(tierFilteredBreedsArrLvl4, purpose);
-    console.log("Tier Filtered Breeds Array Lvl 5")
-    console.log(tierFilteredBreedsArrLvl5)
+    // console.log("Tier Filtered Breeds Array Lvl 5")
+    // console.log(tierFilteredBreedsArrLvl5)
 
     let chosenBreed;
 
@@ -656,13 +656,13 @@ const getBreeds = function () {
             chosenBreed = tierFilteredBreedsArrLvl5[0];
         } else if (tierFilteredBreedsArrLvl4.length > 0) {
             chosenBreed = tierFilteredBreedsArrLvl4[0];
-            console.log("Used Tier 4")
+            // console.log("Used Tier 4")
         } else if (tierFilteredBreedsArrLvl3.length > 0) {
             chosenBreed = tierFilteredBreedsArrLvl3[0];
-            console.log("Used Tier 3")
+            // console.log("Used Tier 3")
         } else {
             // Handle the case where arrays are empty
-            console.log("The filters have removed all options!");
+            // console.log("The filters have removed all options!");
         }
         const chosenBreedName = chosenBreed.name;
         const chosenBreedImgLink = chosenBreed.reference_image_id;
@@ -724,11 +724,11 @@ const getBreeds = function () {
                 {return}
                 return breed
             })
-        console.log(altBreed)
+        // console.log(altBreed)
         let altBreedLoop = altBreed.length >= 4 ? 4 : altBreed.length
         for (let i = 0; i < altBreedLoop; i++) {
-            console.log("Alt Breeds");
-            console.log(altBreed[i]);
+            // console.log("Alt Breeds");
+            // console.log(altBreed[i]);
             const altBreedCard = createAltBreedCard(altBreed[i]);
             altBreedRowContainer.appendChild(altBreedCard);
         }
