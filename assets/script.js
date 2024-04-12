@@ -21,10 +21,10 @@ const quizSubmitHandler = function (event) {
   if (!allQuestionsAnswered()) {
     // If not all questions are answered, render the modal
         modal.style.display = "block";
-    console.log(allQuestionsAnswered())
+    // console.log(allQuestionsAnswered())
     return;
   } else {
-    console.log(allQuestionsAnswered())
+    // console.log(allQuestionsAnswered())
     storeUserInput()
     window.location.href = 'results.html'
   }
