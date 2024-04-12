@@ -2,12 +2,12 @@ const altResultsEl = document.querySelector('#alt-breeds');
 const feelingLuckyBtnEl = document.querySelector('#feeling-lucky-btn');
 const altBreedsRowEl = document.querySelector('#alt-breeds');
 
-
 document.getElementById('feeling-lucky').style.display = 'none';
 
 // Pull the quiz response history from local storage or, if there isn't one, create a new array
 let responses = JSON.parse(localStorage.getItem("quizResponseHistory")) || [];
-console.log(responses);
+// console.log("User Responses");
+// console.log(responses);
 
 // Fetch data from the API
 const apiUrl = "https://api.thedogapi.com/v1/breeds";
@@ -22,7 +22,8 @@ fetch(apiUrl)
     })
     .then(function (breeds) {
         baseBreedsArr = breeds;
-        console.log(baseBreedsArr);
+        // console.log("Base Breed Array");
+        // console.log(baseBreedsArr);
         getBreeds();
     });
 
@@ -367,8 +368,8 @@ const getBreeds = function () {
 
         return traitMapping.question1[size].includes(breed.weight.imperial);
     });
-    console.log("Size Filtered Breeds Array")
-    console.log(sizeFilteredBreedsArr);
+    // console.log("Size Filtered Breeds Array")
+    // console.log(sizeFilteredBreedsArr);
 
     // Energy Filter
     function filterBreedsByTemperament(breedsArr, energy) {
@@ -413,13 +414,13 @@ const getBreeds = function () {
 
     // Filter base array on Energy:
     const energyFilteredBreedsArr = filterBreedsByTemperament(baseBreedsArr, energy);
-    console.log("Energy Filtered Breeds Array")
-    console.log(energyFilteredBreedsArr);
+    // console.log("Energy Filtered Breeds Array")
+    // console.log(energyFilteredBreedsArr);
 
     // Tiered filter Lvl 2
     const tierFilteredBreedsArrLvl2 = filterBreedsByTemperament(sizeFilteredBreedsArr, energy);
-    console.log("Tier Filtered Breeds Array Lvl 2")
-    console.log(tierFilteredBreedsArrLvl2);
+    // console.log("Tier Filtered Breeds Array Lvl 2")
+    // console.log(tierFilteredBreedsArrLvl2);
 
     // Confidence Filter
     function filterBreedsByConfidence(breedsArr, confidence) {
@@ -461,13 +462,13 @@ const getBreeds = function () {
 
     // Filter base array on Confidence: 
     const confidenceFilteredBreedsArr = filterBreedsByConfidence(baseBreedsArr, confidence);
-    console.log("Confidence Filtered Breeds Array")
-    console.log(confidenceFilteredBreedsArr);
+    // console.log("Confidence Filtered Breeds Array")
+    // console.log(confidenceFilteredBreedsArr);
 
     // Tiered filter Lvl 3
     const tierFilteredBreedsArrLvl3 = filterBreedsByConfidence(tierFilteredBreedsArrLvl2, confidence);
-    console.log("Tier Filtered Breeds Array Lvl 3")
-    console.log(tierFilteredBreedsArrLvl3);
+    // console.log("Tier Filtered Breeds Array Lvl 3")
+    // console.log(tierFilteredBreedsArrLvl3);
 
     // Affection Filter
     function filterBreedsByAffection(breedsArr, affection) {
@@ -512,13 +513,13 @@ const getBreeds = function () {
 
     // Filter base array on Affection: 
     const affectionFilteredBreedsArr = filterBreedsByAffection(baseBreedsArr, affection);
-    console.log("Affection Filtered Breeds Array")
-    console.log(affectionFilteredBreedsArr);
+    // console.log("Affection Filtered Breeds Array")
+    // console.log(affectionFilteredBreedsArr);
 
     // Tiered filter Lvl 4
     const tierFilteredBreedsArrLvl4 = filterBreedsByAffection(tierFilteredBreedsArrLvl3, affection);
-    console.log("Tier Filtered Breeds Array Lvl 4")
-    console.log(tierFilteredBreedsArrLvl4);
+    // console.log("Tier Filtered Breeds Array Lvl 4")
+    // console.log(tierFilteredBreedsArrLvl4);
 
     // Purpose filter
     function filterBreedsByPurpose(breedsArr, purpose) {
@@ -640,96 +641,94 @@ const getBreeds = function () {
 
     // Filter base array on Purpose: 
     const purposeFilteredBreedsArr = filterBreedsByPurpose(baseBreedsArr, purpose);
-    console.log("Purpose Filtered Breeds Array");
-    console.log(purposeFilteredBreedsArr);
+    // console.log("Purpose Filtered Breeds Array");
+    // console.log(purposeFilteredBreedsArr);
 
     // Tiered filter Lvl 5 - Final
     const tierFilteredBreedsArrLvl5 = filterBreedsByPurpose(tierFilteredBreedsArrLvl4, purpose);
-    console.log(tierFilteredBreedsArrLvl5)
-    console.log(`Final Results: ${JSON.stringify(tierFilteredBreedsArrLvl5)}`)
+    // console.log("Tier Filtered Breeds Array Lvl 5")
+    // console.log(tierFilteredBreedsArrLvl5)
 
-    console.log(tierFilteredBreedsArrLvl3[0].reference_image_id.toLowerCase());
-
+    let chosenBreed;
 
     const displayChosenBreed = function () {
-        let chosenBreed;
         if (tierFilteredBreedsArrLvl5.length > 0) {
             chosenBreed = tierFilteredBreedsArrLvl5[0];
         } else if (tierFilteredBreedsArrLvl4.length > 0) {
+            chosenBreed = tierFilteredBreedsArrLvl4[0];
+            // console.log("Used Tier 4")
+        } else if (tierFilteredBreedsArrLvl3.length > 0) {
             chosenBreed = tierFilteredBreedsArrLvl3[0];
-            console.log("Used Tier 4")
-        } else if (tierFilteredBreedsArrLvl4.length > 0) {
-            chosenBreed = tierFilteredBreedsArrLvl3[0];
-            console.log("Used Tier 3")
+            // console.log("Used Tier 3")
         } else {
             // Handle the case where arrays are empty
-            console.log("The filters have removed all options!");
+            // console.log("The filters have removed all options!");
         }
         const chosenBreedName = chosenBreed.name;
         const chosenBreedImgLink = chosenBreed.reference_image_id;
 
         document.getElementById("breed_image").src = `https://cdn2.thedogapi.com/images/${chosenBreedImgLink}.jpg`
         document.getElementById("breed_name").textContent = chosenBreedName;
+        document.getElementById("breed_temperament").textContent = chosenBreed.temperament;
     }
 
 
     const defineAltBreeds = function () {
-        console.log(tierFilteredBreedsArrLvl5)
-        console.log(tierFilteredBreedsArrLvl4)
-        console.log(tierFilteredBreedsArrLvl3)
-
         let altBreed;
-        if (tierFilteredBreedsArrLvl5.length > 0) {
+        if (tierFilteredBreedsArrLvl5.length >= 5) {
             altBreed = tierFilteredBreedsArrLvl5;
-        } else if (tierFilteredBreedsArrLvl4.length > 0) {
+        } else if (tierFilteredBreedsArrLvl4.length >= 5) {
+            altBreed = tierFilteredBreedsArrLvl4;
+        } else if (tierFilteredBreedsArrLvl3.length >= 5) {
             altBreed = tierFilteredBreedsArrLvl3;
-        } else if (tierFilteredBreedsArrLvl4.length > 0) {
-            altBreed = tierFilteredBreedsArrLvl3;
+        } else if (tierFilteredBreedsArrLvl2.length >= 5) {
+            altBreed = tierFilteredBreedsArrLvl2;
         }
+
         return altBreed;
     }
 
     const createAltBreedCard = function (altBreed) {
-        // let altBreed;
-        // if (tierFilteredBreedsArrLvl5.length > 0) {
-        //     altBreed = tierFilteredBreedsArrLvl5[i];
-        // } else if (tierFilteredBreedsArrLvl4.length > 0) {
-        //     altBreed = tierFilteredBreedsArrLvl3[i];
-        // } else if (tierFilteredBreedsArrLvl4.length > 0) {
-        //     altBreed = tierFilteredBreedsArrLvl3[i];
-        // }
-
         const altBreedName = altBreed.name;
         const altBreedImgLink = altBreed.reference_image_id;
         const altBreedImg = `https://cdn2.thedogapi.com/images/${altBreedImgLink}.jpg`
 
-        const altBreedCard = document.createElement('div');
-        altBreedCard.classList.add("card", "alt-breed-card");
+        const altBreedCard = document.createElement('section');
+        altBreedCard.classList.add("alt-breed-card", "m-10");
 
-        const altBreedHeader = document.createElement('div');
-        altBreedHeader.classList.add("card-header", "h4");
+        const altBreedHeader = document.createElement('h3');
+        altBreedHeader.classList.add("card-header", "h3");
         altBreedHeader.textContent = altBreedName;
 
-        const altBreedCardBody = document.createElement('div');
-        // altBreedCardBody.classList.add("card-body");
+        const altBreedCardBody = document.createElement('section');
+        altBreedCardBody.classList.add("card-body");
+        altBreedCardBody.textContent = altBreed.temperament;
 
         const altBreedCardImg = document.createElement('img');
+        altBreedCardImg.classList.add("alt-breed-img");
         altBreedCardImg.setAttribute("src", altBreedImg);
 
-        altBreedCardBody.append(altBreedCardImg);
-        altBreedCard.append(altBreedHeader, altBreedCardBody);
+        // altBreedCardBody.append();
+        altBreedCard.append(altBreedHeader, altBreedCardImg, altBreedCardBody);
 
         return altBreedCard;
     };
 
     const displayAltBreeds = function (altBreed) {
 
-        const altBreedRowContainer = document.createElement('div');
-        altBreedRowContainer.classList.add('alt-breed-row');
-        altBreed = defineAltBreeds();
-        console.log(altBreed);
-        for (let i = 1; i < altBreed.length; i++) {
-            console.log(altBreed[i]);
+        const altBreedRowContainer = document.createElement('section');
+        altBreedRowContainer.classList.add('flex', 'flex-wrap', 'justify-center');
+        altBreed = defineAltBreeds()
+            .filter(breed => {
+                if (breed === chosenBreed)
+                {return}
+                return breed
+            })
+        // console.log(altBreed)
+        let altBreedLoop = altBreed.length >= 4 ? 4 : altBreed.length
+        for (let i = 0; i < altBreedLoop; i++) {
+            // console.log("Alt Breeds");
+            // console.log(altBreed[i]);
             const altBreedCard = createAltBreedCard(altBreed[i]);
             altBreedRowContainer.appendChild(altBreedCard);
         }
@@ -748,29 +747,26 @@ const displayFeelingLucky = function () {
     const randomBreedName = randomBreed.name;
     const randomBreedImgLink = randomBreed.reference_image_id;
 
-    // if (!randomBreed.reference_image_id.response === 200) {
-    //     displayFeelingLucky();
-    // }
-
     fetch(`https://corsproxy.io/?https://cdn2.thedogapi.com/images/${randomBreedImgLink}.jpg`)
         .then(function (response) {
             if (!response.ok) {
-              displayFeelingLucky();
+                displayFeelingLucky();
             }
         }
         )
 
     document.getElementById("lucky_breed_image").src = `https://cdn2.thedogapi.com/images/${randomBreedImgLink}.jpg`;
     document.getElementById("lucky_breed_name").textContent = randomBreedName;
+    document.getElementById("lucky_breed_temperament").textContent = randomBreed.temperament;
+
 };
 
 // Dog Facts
 fetch("https://dogapi.dog/api/v2/facts?limit=2").then(res => res.json())
-    .then(data => {
-        console.log(data)
-        document.getElementById("fact1").textContent = data.data[0].attributes.body
-        document.getElementById("fact2").textContent = data.data[1].attributes.body
-    })
+  .then(data => {
+    document.getElementById("fact1").textContent = `- ${data.data[0].attributes.body}`
+    document.getElementById("fact2").textContent = `- ${data.data[1].attributes.body}`
+  })
 
 // Event listeners to trigger the above functions
 feelingLuckyBtnEl.addEventListener('click', displayFeelingLucky);

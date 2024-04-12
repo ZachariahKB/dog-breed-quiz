@@ -7,45 +7,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Doggy Dog Breed Quiz Results</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="./assets/styles.css"> -->
+    <link rel="stylesheet" href="./assets/styles.css">
 </head>
 
 <body class="bg-gray-100">
     <header class="text-center py-8 bg-blue-500 text-white">
         <h1 class="text-4xl font-bold">The Doggy Dog Breed Quiz</h1>
     </header>
-    <main class="max-w-lg mx-auto my-8">
-        <p class="text-center text-lg mb-4">This is your new best friend.</p>
-        <div class="flex flex-col items-center">
-            <div class="max-w-md h-100 mb-4 rounded-lg overflow-hidden shadow-md"> <!-- Added height (e.g., h-60) and overflow-hidden -->
-                <img id="breed_image" src="" alt="Breed Image" class="w-full h-full object-cover"> <!-- Added object-cover -->
-            </div>
-            <p id="breed_name" class="text-lg font-bold mb-2"></p>
-        </div>
+    <main class="mx-auto my-8">
+        <a href="index.html" class="back-btn px-6 py-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition duration-300">Take the Quiz Again</a>
+        <br></br>
+        <h2 class="text-center text-lg mb-4">Meet your new best friend!</h2>
+        <section class="flex flex-col items-center">
+            <section class=" mb-4 breed-card">
+                <p id="breed_name" class="text-2xl font-bold mb-3"></p>
+                <img id="breed_image" src="" alt="Breed Image" class="breed-image">
+                <p id="breed_temperament" class="breed-card-text"></p>
+            </section>
+        </section>
+        <h3 class="other-breeds">Here are a few other breeds that match your preferences:</h3>
         <section id="alt-breeds" class="text-center mb-8">
             <!-- Alternative breeds will be displayed here -->
         </section>
-        <button id="feeling-lucky-btn" class="w-full px-6 py-3 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600 transition duration-300">Feeling Lucky?</button>
+        <button id="feeling-lucky-btn" class="w-4/12 px-6 py-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition duration-300">Feeling Lucky?</button>
 
-        <div class="flex flex-col items-center mt-8">
-            <div class="max-w-md h-60 mb-4 rounded-lg overflow-hidden shadow-md"> <!-- Added height (e.g., h-60) and overflow-hidden -->
-                <img id="lucky_breed_image" src="" alt="Random Breed Image" class="w-full h-full object-cover"> <!-- Added object-cover -->
-            </div>
-            <p id="lucky_breed_name" class="text-lg font-bold mb-2"></p>
-        </div>
-        <section class="py-4 text-center">
-            <p id="fact1" class="text-lg">Fact 1: Dogs are awesome!</p>
-            <p id="fact2" class="text-lg">Fact 2: They make great companions.</p>
+        <section class="flex flex-col items-center mt-8" id="feeling-lucky">
+            <section class="lucky-breed-card"> 
+                <p id="lucky_breed_name" class="text-lg font-bold mb-2"></p>
+                <img id="lucky_breed_image" src="" alt="Random Breed Image" class="w-full h-full object-cover">
+                <p id="lucky_breed_temperament" class="mb-2"></p>
+            </section>
         </section>
-        
     </main>
+    <section class="py-4 text-center">
+        <p class="facts">Dog Fun Facts</p>
+        <p id="fact1" class="text-lg m-2">Fact 1: Dogs are awesome!</p>
+        <p id="fact2" class="text-lg m-2">Fact 2: They make great companions.</p>
+    </section>
     <footer class="py-4 text-center bg-gray-200">
-        
         <section>
-            <h6>Made with ❤️ by Win, Gordon, and Zachariarh - 2024</h6>
+            <h6>Made with ❤️ by Win, Gordon, and Zachariah <br> 2024</h6>
         </section>
     </footer>
-    <script src="./assets/results.js"></script>
-</body>
 
+</body>
+<script src="./assets/results.js"></script>
 </html>

@@ -16,8 +16,29 @@ const showQuiz = function (event) {
 // When quiz is submitted, user answers are stored locally to be references on results.html
 const quizSubmitHandler = function (event) {
   event.preventDefault();
+
+  if (!allQuestionsAnswered()) {
+    // If not all questions are answered, render the modal
+    renderModal();
+    return; // Exit the function to prevent further execution
+  }
   storeUserInput();
   window.location.href = 'results.html'
+};
+
+// Function to check if all questions are answered
+const allQuestionsAnswered = function () {
+  // Loop through each question and check if it has a selected answer
+  if (!document.querySelector('input[name="choice1"]:checked') ||
+    !document.querySelector('input[name="choice2"]:checked') ||
+    !document.querySelector('input[name="choice3"]:checked') ||
+    !document.querySelector('input[name="choice4"]:checked') ||
+    !document.querySelector('input[name="choice5"]:checked')) {
+    {
+      return false; // If any question does not have an answer, return false
+    }
+  }
+  return true; // Return true if all questions have answers
 };
 
 // Fetch data from the API
@@ -33,10 +54,9 @@ fetch(apiUrl)
   })
   .then(function (breeds) {
     baseBreedsArr = breeds;
-    // console.log(baseBreedsArr);
   });
 
-  // Store User input locally for usage on results page
+// Store User input locally for usage on results page
 const storeUserInput = function () {
   const responses = {
     size: document.querySelector('input[name="choice1"]:checked').value,
@@ -50,18 +70,41 @@ const storeUserInput = function () {
   if (!Array.isArray(responseHistory)) {
     responseHistory = [];
   }
-  
+
   responseHistory.unshift(responses);
   localStorage.setItem("quizResponseHistory", JSON.stringify(responseHistory));
-  // console.log(responses);
 }
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+const renderModal = function () {
+  document.getElementById("quiz-submit").onclick = function () {
+    modal.style.display = "block";
+  };
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
 
 // Dog Facts
 fetch("https://dogapi.dog/api/v2/facts?limit=2").then(res => res.json())
   .then(data => {
-    // console.log(data)
-    document.getElementById("fact1").textContent = data.data[0].attributes.body
-    document.getElementById("fact2").textContent = data.data[1].attributes.body
+    document.getElementById("fact1").textContent = `- ${data.data[0].attributes.body}`
+    document.getElementById("fact2").textContent = `- ${data.data[1].attributes.body}`
   })
 
 // Event listeners to trigger the above functions
