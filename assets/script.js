@@ -57,8 +57,8 @@ const storeUserInput = function () {
 // Dog Facts
 fetch("https://dogapi.dog/api/v2/facts?limit=2").then(res => res.json())
   .then(data => {
-    document.getElementById("fact1").textContent = data.data[0].attributes.body
-    document.getElementById("fact2").textContent = data.data[1].attributes.body
+    document.getElementById("fact1").textContent = `- ${data.data[0].attributes.body}`
+    document.getElementById("fact2").textContent = `- ${data.data[1].attributes.body}`
   })
 
 // Event listeners to trigger the above functions

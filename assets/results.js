@@ -669,6 +669,7 @@ const getBreeds = function () {
 
         document.getElementById("breed_image").src = `https://cdn2.thedogapi.com/images/${chosenBreedImgLink}.jpg`
         document.getElementById("breed_name").textContent = chosenBreedName;
+        document.getElementById("breed_temperament").textContent = chosenBreed.temperament;
     }
 
 
@@ -693,20 +694,22 @@ const getBreeds = function () {
         const altBreedImg = `https://cdn2.thedogapi.com/images/${altBreedImgLink}.jpg`
 
         const altBreedCard = document.createElement('div');
-        altBreedCard.classList.add("card", "alt-breed-card");
+        altBreedCard.classList.add("alt-breed-card", "m-10");
 
-        const altBreedHeader = document.createElement('div');
-        altBreedHeader.classList.add("card-header", "h4");
+        const altBreedHeader = document.createElement('h3');
+        altBreedHeader.classList.add("card-header", "h3");
         altBreedHeader.textContent = altBreedName;
 
         const altBreedCardBody = document.createElement('div');
-        // altBreedCardBody.classList.add("card-body");
+        altBreedCardBody.classList.add("card-body");
+        altBreedCardBody.textContent = altBreed.temperament;
 
         const altBreedCardImg = document.createElement('img');
+        altBreedCardImg.classList.add("alt-breed-img");
         altBreedCardImg.setAttribute("src", altBreedImg);
 
-        altBreedCardBody.append(altBreedCardImg);
-        altBreedCard.append(altBreedHeader, altBreedCardBody);
+        // altBreedCardBody.append();
+        altBreedCard.append(altBreedHeader, altBreedCardImg, altBreedCardBody);
 
         return altBreedCard;
     };
@@ -714,7 +717,7 @@ const getBreeds = function () {
     const displayAltBreeds = function (altBreed) {
 
         const altBreedRowContainer = document.createElement('div');
-        altBreedRowContainer.classList.add('flex');
+        altBreedRowContainer.classList.add('flex', 'flex-wrap', 'justify-center');
         altBreed = defineAltBreeds()
             .filter(breed => {
                 if (breed === chosenBreed)
@@ -754,14 +757,16 @@ const displayFeelingLucky = function () {
 
     document.getElementById("lucky_breed_image").src = `https://cdn2.thedogapi.com/images/${randomBreedImgLink}.jpg`;
     document.getElementById("lucky_breed_name").textContent = randomBreedName;
+    document.getElementById("lucky_breed_temperament").textContent = randomBreed.temperament;
+
 };
 
 // Dog Facts
 fetch("https://dogapi.dog/api/v2/facts?limit=2").then(res => res.json())
-    .then(data => {
-        document.getElementById("fact1").textContent = data.data[0].attributes.body
-        document.getElementById("fact2").textContent = data.data[1].attributes.body
-    })
+  .then(data => {
+    document.getElementById("fact1").textContent = `- ${data.data[0].attributes.body}`
+    document.getElementById("fact2").textContent = `- ${data.data[1].attributes.body}`
+  })
 
 // Event listeners to trigger the above functions
 feelingLuckyBtnEl.addEventListener('click', displayFeelingLucky);
