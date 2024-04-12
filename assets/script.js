@@ -45,21 +45,6 @@ const allQuestionsAnswered = function () {
   return true; // Return true if all questions have answers
 };
 
-// Fetch data from the API
-const apiUrl = "https://api.thedogapi.com/v1/breeds";
-let baseBreedsArr = [];
-
-fetch(apiUrl)
-  .then(function (responses) {
-    if (!responses.ok) {
-      throw new Error('API Network not OK')
-    }
-    return responses.json();
-  })
-  .then(function (breeds) {
-    baseBreedsArr = breeds;
-  });
-
 // Store User input locally for usage on results page
 const storeUserInput = function () {
   const responses = {
